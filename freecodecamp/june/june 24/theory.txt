@@ -1,0 +1,24 @@
+you can solve this using either for loop or using the enumerate+zip or only the zip
+
+The zip() function in Python is used to combine multiple iterables (like lists or tuples) together element by element.
+
+Code :
+
+names = ["Alice", "Bob", "Charlie"]
+ages = [20, 25, 30]
+
+result = zip(names, ages)
+
+print(list(result))
+
+Output:
+
+[('Alice', 20), ('Bob', 25), ('Charlie', 30)]
+
+how it works:
+
+| names   | ages | result        |
+| ------- | ---- | ------------- |
+| Alice   | 20   | (Alice, 20)   |
+| Bob     | 25   | (Bob, 25)     |
+| Charlie | 30   | (Charlie, 30) |

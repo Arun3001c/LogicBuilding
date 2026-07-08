@@ -1,0 +1,27 @@
+def migrate_record(schema, record):
+    for key in schema.keys():
+        if key in record.keys():
+            pass
+        else:
+            record[key]=schema[key]
+    return record
+
+#usinig the update method
+
+def migrate_record(schema, record):
+    for key in schema:
+        if key not in record:
+            record.update({key: schema[key]})
+    return record
+
+#=======using the setdefault()
+
+def migrate_record(schema, record):
+    for key, value in schema.items():
+        record.setdefault(key, value)
+    return record
+
+print(migrate_record(
+    {"username": "", "posts": 0},
+    {"verified": True}
+))

@@ -1,0 +1,10 @@
+Best common approach: build a list + join
+
+Instead of repeatedly adding to a string, you collect parts first:
+
+Idea:
+store pieces in a list
+join at the end
+Why this is better:
+
+String concatenation creates a new string every time (slow for large inputs), while lists are efficient.

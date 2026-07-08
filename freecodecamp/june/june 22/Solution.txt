@@ -1,0 +1,47 @@
+def make_leet(s):
+    rules={
+        'a':'4',
+        'e':'3',
+        'g':'9',
+        'i':'1',
+        'l':'1',
+        'o':'0',
+        's':'5',
+        't':'7'
+    }
+    result = ""
+    for ch in s:
+        if ch in rules.keys():
+            # replace
+            # ch=rules[ch]
+            # print(ch)
+            result=result+rules.get(ch)
+        else:
+            result=result+ch
+            
+            
+    return result
+print(make_leet("cool"))
+
+print(make_leet("leet"),end="")
+
+
+def make_leet(s):
+    rules = {
+        'a':'4','e':'3','g':'9','i':'1',
+        'l':'1','o':'0','s':'5','t':'7'
+    }
+
+    result = []
+
+    for ch in s:
+        result.append(rules.get(ch, ch))
+
+    return "".join(result)
+
+
+def make_leet(s):
+    rules = {'a':'4','e':'3','g':'9','i':'1','l':'1','o':'0','s':'5','t':'7'}
+    return "".join(rules.get(ch, ch) for ch in s)
+
+

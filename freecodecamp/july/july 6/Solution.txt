@@ -1,0 +1,25 @@
+def get_lowercase_words(s):
+    words=s.split(" ")
+    lower_case_words=[]
+    for word in words:
+        if word.islower():
+            lower_case_words.append(word)
+            
+    return " ".join(lower_case_words)
+
+#using isupper()
+def get_lowercase_words(text):
+    result = []
+
+    for word in text.split():
+        has_upper = False
+
+        for ch in word:
+            if ch.isupper():
+                has_upper = True
+                break
+
+        if not has_upper:
+            result.append(word)
+
+    return " ".join(result)

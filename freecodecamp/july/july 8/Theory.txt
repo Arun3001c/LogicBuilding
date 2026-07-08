@@ -1,0 +1,8 @@
+here remember this mistake is repeated few times while coding one is missing the comma when used the print function the arguments and end are separated by comma 
+print(triage_issue(345600000, "I'll make a PR"),end="") 
+there is no contains method for checking whether the element lies in or not actually the "in" operator is used to check like this and in the inside the "in" operator there is a "_contains_" constructor 
+
+text = "Bumping this" # code for this
+
+print(text.__contains__("Bump"))      # True
+print(text.lower().__contains__("bump")) 

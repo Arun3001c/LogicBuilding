@@ -1,0 +1,114 @@
+first method a decision tree?
+                Start
+                  |
+          What is the genre?
+      _________|___________
+     |         |      |     |
+   rock     pop   classical electronic
+     |         |        |        |
+   Check     happy    Check    Check
+    BPM                BPM      BPM
+
+
+electronic
+      |
+ Is BPM <= 89?
+   /        \
+Yes         No
+ |           |
+focus   Is BPM <= 134?
+            /      \
+         Yes       No
+          |         |
+       happy      hype
+
+second one is dictionary one
+Case 1: Few rules (like your problem)
+
+You have only 4 genres.
+
+A decision tree (if/elif) is perfectly fine because it's simple and easy to read.
+
+Case 2: Many genres (say 100)
+
+Imagine you have:
+
+rock
+pop
+jazz
+hip-hop
+country
+metal
+blues
+...
+100 genres
+
+Writing 100 if statements becomes difficult to maintain.
+
+Instead, you would store the rules as data, not as code.
+
+Conceptually:
+
+{
+    "rock": [
+        (60, 129, "happy"),
+        (130, 180, "hype")
+    ],
+
+    "electronic": [
+        (60, 89, "focus"),
+        (90, 134, "happy"),
+        (135, 180, "hype")
+    ],
+
+    ...
+}
+
+Now your program doesn't know anything about rock or pop specifically. It simply:
+
+Finds the list for the given genre.
+Goes through its ranges.
+Returns the mood for the matching range.
+
+Notice that the logic stays the same even if you add 500 more genres. You only add more data.
+
+What professionals think about
+
+Instead of asking:
+
+"Can I use a dictionary?"
+
+They ask:
+
+Is the code easy to read?
+Is it easy to modify?
+Is it efficient enough?
+Will another developer understand it in six months?
+
+def get_mood(moods, genre, bpm):
+    for low, high, mood in moods.get(genre, []):
+        if low <= bpm <= high:
+            return mood
+    return "unknown"
+
+
+moods = {}
+
+n = int(input("How many rules? "))
+
+for _ in range(n):
+    genre = input("Genre: ")
+    low = int(input("Min BPM: "))
+    high = int(input("Max BPM: "))
+    mood = input("Mood: ")
+
+    if genre not in moods:
+        moods[genre] = []
+
+    moods[genre].append((low, high, mood))
+
+
+genre = input("Enter genre to check: ")
+bpm = int(input("Enter BPM: "))
+
+print(get_mood(moods, genre, bpm))

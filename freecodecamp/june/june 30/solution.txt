@@ -1,0 +1,41 @@
+def duplicate_character_count(str1, str2):
+    values={}
+    count=0
+    # for i in range(len(str1)):
+    #   values[str1[i]]=True
+    for ch in str1:
+        values[ch]=True
+    # for i in range(len(str2)):
+    #     if str2[i] in values:
+    for ch in str2:
+        if ch in values:
+            count+=1
+    return count
+
+print(duplicate_character_count("", "bonjour"),end="")
+
+
+theory:
+Can it be simplified?
+
+Instead of
+
+for i in range(len(str1)):
+    values[str1[i]] = True
+
+Python programmers usually iterate directly over the characters:
+
+for ch in str1:
+    values[ch] = True
+
+Similarly,
+
+for i in range(len(str2)):
+    if str2[i] in values:
+
+can become
+
+for ch in str2:
+    if ch in values:
+
+This is considered more Pythonic because you don't need the index.

@@ -1,0 +1,16 @@
+=======================July 4===============================
+concept of using sorted on iterable so sorted() works for the string 
+where as .sort() works ONLY on lists, not directly on strings
+f"{n:04d}" → converts number to 4-digit string (since problem definitely requires the 4 digit number.
+finally handling the edge cases where it becomes "zero" so checking the n.
+
+======================July 5===================================
+2d Array problem discussed the algorithms
+
+======================July 6===================================
+" lowercase words " we used isupper() or islower() to solve this problem
+======================July 7 ==================================
+" Nearest multiple " it is solved on the previous learned logic of nearest multiple of k = round(number/k) * k
+see the June soltace problem June 21 or 20th days
+=====================July 8====================================
+" Issue Trianlge " is just a if elif else code with simple comparing

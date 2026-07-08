@@ -1,0 +1,106 @@
+# # def triage_blood(bank, patients):
+# #     counts={}
+# #     for blood in bank:
+# #         if blood in counts:
+# #             counts[blood]+=1
+# #         else:
+# #             counts[blood]=1
+# #     print(counts)
+# def triage_blood(bank, patients):
+#     def convert(bank):
+#         counts={}
+#         for blood in bank:
+#             if blood in counts:
+#                 counts[blood]+=1
+#             else:
+#                 counts[blood]=1
+#         return counts
+#     inventory_count=convert(bank)
+#     patient_count =convert(patients)
+#     print(inventory_count)
+#     print(patient_count)
+#     total_served=0
+#     if "O" in patient_count.keys():
+#         needed=patient_count["O"]
+#         available=inventory_count["O"]
+#         served=min(available,needed)
+#         total_served+=served
+        
+#         inventory_count["O"]-=served
+#         # print(served)
+#         # print(total_served)
+#         # print(inventory_count['O'])
+#     if "A" in patient_count.keys():
+#         needed=patient_count['A']
+#         a_available=inventory_count['A']
+#         # print(needed)
+#         # print(a_available)
+#         served=min(needed,a_available)
+#         total_served+=served
+#         inventory_count['A']-=served
+#         patient_count['A']-=served
+#         # print(inventory_count['A'],patient_count['A'])
+#         if patient_count['A'] and inventory_count['O']:
+#             needed=patient_count['A']
+#             available=inventory_count['O']
+#             served=min(needed,available)
+#             total_served+=served
+#             inventory_count['O']-=served
+#             patient_count['A']-=served
+    
+            
+
+        
+def triage_blood(bank, patients):
+    def convert(arr):
+        counts = {}
+        for blood in arr:
+            counts[blood] = counts.get(blood, 0) + 1
+        return counts
+
+    inventory = convert(bank)
+    patient = convert(patients)
+
+    served = 0
+
+    # O patients
+    use = min(patient.get("O", 0), inventory.get("O", 0))
+    served += use
+    patient["O"] = patient.get("O", 0) - use
+    inventory["O"] = inventory.get("O", 0) - use
+
+    # A patients
+    use = min(patient.get("A", 0), inventory.get("A", 0))
+    served += use
+    patient["A"] = patient.get("A", 0) - use
+    inventory["A"] = inventory.get("A", 0) - use
+    
+    use = min(patient.get("A", 0), inventory.get("O", 0))
+    served += use
+    patient["A"] -= use
+    inventory["O"] -= use
+
+    # B patients
+    use = min(patient.get("B", 0), inventory.get("B", 0))
+    served += use
+    patient["B"] = patient.get("B", 0) - use
+    inventory["B"] = inventory.get("B", 0) - use
+
+    use = min(patient.get("B", 0), inventory.get("O", 0))
+    served += use
+    patient["B"] -= use
+    inventory["O"] -= use
+    
+    # AB patients
+    for donor in ["AB", "A", "B", "O"]:
+        use = min(patient.get("AB", 0), inventory.get(donor, 0))
+        served += use
+        patient["AB"] = patient.get("AB", 0) - use
+        inventory[donor] = inventory.get(donor, 0) - use
+
+    return f"{served} of {len(patients)} patients served"
+print(triage_blood(["O", "A", "B", "AB"], ["O", "A", "B", "AB"]))
+
+
+
+in this question you need to get to know that using the .get will help by handling a situation where there is no blood group by adding default value so the code in the comments used the direct access for values in the dictionary but the actual code uses the .get method to handle this 

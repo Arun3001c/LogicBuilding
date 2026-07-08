@@ -1,0 +1,10 @@
+def prime_factorization(n):
+    factor=2
+    factors=[]
+    while n>1:
+        while n % factor == 0:
+            factors.append(factor)
+            n=n//factor
+        factor+=1
+
+    return factors

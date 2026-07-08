@@ -1,0 +1,22 @@
+def triage_issue(ms, message):
+    days=ms/86400000
+    if days<7:
+        return "leave it"
+    elif days>=7:
+        if "bump" in message.lower():
+            return "close it"
+        else:
+            return "bump it"
+
+#second way insted of dividing checking directly with 7 days milliseconds
+
+def triage_issue(milliseconds_since_last_post, last_message):
+    seven_days = 604800000
+
+    if milliseconds_since_last_post < seven_days:
+        return "leave it"
+
+    if "bump" in last_message.lower():
+        return "close it"
+
+    return "bump it"

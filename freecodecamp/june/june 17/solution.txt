@@ -1,0 +1,34 @@
+def cast(spells):
+    code={
+        'f':('Destruction',3),
+        'l':('Destruction',3),
+        'i':('Control',2),
+        'w':('Control',2),
+        'h':('Restoration',1),
+        's':('Restoration',1)
+    }
+    multiplier=0
+    total=0
+    prev_category=None
+    for ch in spells:
+        category, base = code[ch]
+
+        if prev_category is None:
+            multiplier = 1
+        elif category == prev_category:
+            multiplier = 1
+        else:
+            multiplier += 1
+
+        total += base * multiplier
+        prev_category = category
+        
+    return total
+
+
+You’re given a mapping (like "f" → Fire (Destruction) → base score 3), so your first step is to create a lookup structure that lets you quickly answer:
+
+What is this spell’s base score?
+What category does it belong to?
+
+Once you have that, the problem becomes much easier because the rest is just walking through the string while tracking state.

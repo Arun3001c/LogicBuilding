@@ -1,0 +1,49 @@
+#Hard coded logic 
+
+def get_mood(genre, bpm):
+    if genre=="classical":
+        if bpm>=60 and bpm<=109:
+            return "focus"
+        elif bpm >109 and bpm<=180:
+            return "happy"
+    elif genre=="pop":
+        if bpm>=60 and bpm<=180:
+            return "happy"
+    elif genre=="rock":
+        if bpm>=60 and bpm <=129:
+            return "happy"
+        elif bpm>=130 and bpm <=180:
+            return "hype"
+    elif genre=="electronic":
+        if bpm >=60 and bpm<=89:
+            return "focus"
+        elif bpm>=90 and bpm <=134:
+            return "happy"
+        elif bpm>=135 and bpm<=180:
+            return "hype"
+print(get_mood("rock", 111))
+
+#dictionary based logic
+def get_mood(genre, bpm):
+    moods = {
+        "classical": [
+            (60, 109, "focus"),
+            (110, 180, "happy")
+        ],
+        "pop": [
+            (60, 180, "happy")
+        ],
+        "rock": [
+            (60, 129, "happy"),
+            (130, 180, "hype")
+        ],
+        "electronic": [
+            (60, 89, "focus"),
+            (90, 134, "happy"),
+            (135, 180, "hype")
+        ]
+    }
+
+    for low, high, mood in moods.get(genre, []):
+        if low <= bpm <= high:
+            return mood

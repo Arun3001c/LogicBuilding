@@ -1,0 +1,105 @@
+import re
+
+def british_to_american(sentence):
+    mapping = {
+        "colour": "color",
+        "flavour": "flavor",
+        "honour": "honor",
+        "neighbour": "neighbor",
+        "labour": "labor",
+        "humour": "humor",
+        "centre": "center",
+        "fibre": "fiber",
+        "defence": "defense",
+        "offence": "offense",
+        "organise": "organize",
+        "recognise": "recognize",
+        "analyse": "analyze"
+    }
+
+    for uk, us in mapping.items():
+        sentence = re.sub(uk, us, sentence, flags=re.IGNORECASE)
+
+    return sentence
+
+🧠 Step-by-step explanation
+1. import re
+import re
+
+This imports Python’s regular expression (regex) module.
+
+👉 Regex lets you search and replace patterns inside text (not just exact words).
+
+2. The dictionary (mapping)
+mapping = {
+    "colour": "color",
+    ...
+}
+
+This is your lookup table.
+
+Keys = British spellings
+Values = American spellings
+
+Example:
+
+"centre" → "center"
+"honour" → "honor"
+3. Loop through all replacements
+for uk, us in mapping.items():
+
+This goes through each pair:
+
+Example iterations:
+
+("colour", "color")
+("flavour", "flavor")
+...
+
+So we replace one rule at a time.
+
+4. re.sub() does the replacement
+sentence = re.sub(uk, us, sentence, flags=re.IGNORECASE)
+
+This is the core line.
+
+What it means:
+
+👉 “Find every occurrence of uk in the sentence and replace it with us”
+
+Example:
+sentence = "The colour of the colour"
+uk = "colour"
+us = "color"
+
+After:
+
+"The color of the color"
+5. flags=re.IGNORECASE
+
+This makes matching case-insensitive.
+
+So it matches:
+
+colour
+Colour
+COLOUR
+
+All become:
+
+color
+6. Updating the sentence each time
+sentence = re.sub(...)
+
+Important idea:
+
+You are repeatedly updating the sentence:
+
+Step-by-step:
+
+Original: "The colour centre"
+
+After "colour": "The color centre"
+After "centre": "The color center"
+7. Return final result
+return sentence

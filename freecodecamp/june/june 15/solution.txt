@@ -1,0 +1,23 @@
+def sort_numbers(s):
+    s=s.split(",")
+    for i in range(len(s)):
+        s[i]=int(s[i])
+    s.sort()
+    return s
+
+#more pythonic way
+def sort_numbers(s):
+    nums = list(map(int, s.split(",")))
+    nums.sort()
+    return nums
+#best style
+def sort_numbers(s):
+    return sorted(map(int, s.split(",")))
+
+
+| Method                 | Mutates? | Readability | Pythonic level |
+| ---------------------- | -------- | ----------- | -------------- |
+| loop conversion + sort | yes      | medium      | low            |
+| map + sort             | yes      | good        | medium         |
+| sorted(map(...))       | no       | best        | high           |
+

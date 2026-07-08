@@ -1,0 +1,56 @@
+def array_swap(arr):
+    temp=arr[0]
+    arr[0]=arr[1]
+    arr[1]=temp
+    return arr
+
+| Category       | Rating    |
+| -------------- | --------- |
+| Correctness    | **10/10** |
+| Efficiency     | **10/10** |
+| Readability    | **10/10** |
+| Pythonic style | **7/10**  |
+
+# pythonic way
+def array_swap(arr):
+    arr[0], arr[1] = arr[1], arr[0] #tuple unpacking
+    return arr
+#even shorter
+If mutating(modifying) the original list isn't required:
+def array_swap(arr):
+    return arr[::-1]
+This returns a new reversed list.
+
+
+arr = [1, 2, 3, 4, 5]
+print(arr)
+print(id(arr))
+arr=arr[::-1]
+print(arr,id(arr),end="")
+
+
+here the above code returns a different reference id's but the below code not since the arr.reverse() returns a none value so in the above the program id takes that none as input argument so it gives different value
+
+
+arr = [1, 2, 3, 4, 5]
+
+print(id(arr))
+
+arr.reverse()
+
+print(id(arr))
+
+Python design rule (important)
+
+Python splits operations into two categories:
+If a method modifies the object in place, it usually returns None.
+If it creates a new object, it returns that object.
+1. In-place operations → return None
+list.append(x)
+list.extend(x)
+list.sort()
+list.reverse()
+2. New-object operations → return new list
+sorted(arr)
+arr[::-1]
+

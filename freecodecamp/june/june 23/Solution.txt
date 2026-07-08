@@ -1,0 +1,6 @@
+def calculate_bmi(weight, height):
+    result =(weight/height**2)*703 
+    return round(result,1)
+    
+print(calculate_bmi(180, 70))
+print(calculate_bmi(140, 64))

@@ -1,0 +1,66 @@
+def find_left_handed_seats(table):
+    count=0
+    
+    for index, row in enumerate(table):
+        for i in range(len(row)):
+            if index==0:
+                if i==3 and row[i]=="U" or row[i]=="U"and row[i+1] != "R":
+                    count+=1
+            else:
+                if i==0 and row[i]=="U" or row[i]=="U"and row[i-1]!="R" :
+                    count+=1
+    return count
+    
+print(find_left_handed_seats([["U", "R", "U", "L"], ["U", "R", "R", "R"]]),end="")
+print(find_left_handed_seats([["U", "R", "U", "U"], ["U", "U", "L", "U"]]))
+
+Overall rating
+Category	Rating
+Correctness	9/10
+Efficiency	10/10
+Readability	6/10
+Pythonic style	6.5/10
+Main improvements
+Add parentheses around boolean expressions instead of relying on precedence.
+Avoid repeating row[i] == "U".
+Replace the magic number 3 with len(row) - 1.
+Separate boundary checks from seating logic.
+Follow PEP 8 spacing conventions.
+
+
+#a cleaner and more Pythonic version that keeps essentially the same algorithm:
+
+def find_left_handed_seats(table):
+    count = 0
+
+    for row_index, row in enumerate(table):
+        for seat_index, seat in enumerate(row):
+            if seat != "U":
+                continue
+
+            if row_index == 0:  # Top row faces down
+                if seat_index == len(row) - 1 or row[seat_index + 1] != "R":
+                    count += 1
+            else:  # Bottom row faces up
+                if seat_index == 0 or row[seat_index - 1] != "R":
+                    count += 1
+
+    return count
+
+#even more clearer version
+def find_left_handed_seats(table):
+    count = 0
+
+    for row_index, row in enumerate(table):
+        direction = 1 if row_index == 0 else -1
+
+        for seat_index, seat in enumerate(row):
+            if seat != "U":
+                continue
+
+            left = seat_index + direction
+
+            if not (0 <= left < len(row)) or row[left] != "R":
+                count += 1
+
+    return count

@@ -1,0 +1,32 @@
+def get_lucky_number(name):
+    first_name,last_name=name.split(" ")
+    lastc,lastv,firstc,firstv=0,0,0,0
+    for ch in first_name:
+        if ch in "aeiouAEIOU":
+            firstv+=1
+        else:
+            firstc+=1
+    for ch in last_name:
+        if ch in "aeiouAEIOU":
+            lastv+=1
+        else:
+            lastc+=1
+    # print(firstc,firstv,lastc,lastv)
+    larger_length=0
+    smaller_length=0
+    if len(first_name)>len(last_name):
+        larger_length=len(first_name)
+        smaller_length=len(last_name)
+    else:
+        larger_length=len(last_name)
+        smaller_length=len(first_name)
+    # print(larger_length,smaller_length)
+    smaller=min(firstv,lastv)*min(lastc,firstc)*smaller_length
+    # print(smaller)
+    larger=max(firstv,lastv)*max(lastc, firstc)*larger_length
+    # print(larger)
+    final=larger-smaller
+    if not final:
+        return 13
+    return larger-smaller
+print(get_lucky_number("John Doe"))

@@ -1,0 +1,14 @@
+record.update(key,schema[key]) this is mistake (since update takes only one value)
+
+
+
+If you want to use update(), pass a dictionary:
+
+record.update({key: schema[key]})
+
+
+you can add the data using the set default and also 
+
+if key in record.keys(): you can write simply 
+	--------if key in record: 
+It's shorter and is the standard Python style.

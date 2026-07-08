@@ -1,0 +1,59 @@
+def resolution_streak(days):
+    streak=0
+    for index,day in enumerate(days):
+        steps_completed=False
+        screen_time=False
+        read_pages=False
+        # print(day)
+        if day[0]>=10000:
+            steps_completed=True
+        # print(day[0],steps_completed)
+        if day[1]<=120:
+            screen_time=True
+        # print(day[1],screen_time)
+        if day[2]>=5:
+            read_pages=True
+        # print(day[2],read_pages)
+        
+        
+        #now increase the streak by one
+        if steps_completed and screen_time and read_pages:
+            streak+=1
+        else:
+            return f"Resolution failed on day {index+1}: {streak} day streak."
+        
+
+    return f"Resolution on track: {streak} day streak."
+print(resolution_streak([[15000, 110, 8], [12300, 60, 13], [10100, 120, 4], [9000, 125, 4]]), end="")
+
+
+
+#but this code logic isn't pythonic since unnecessary Boolean variables declared and too many if statements and Final condition can be written directly so for this you need to create the code like below 👇
+
+#A more Pythonic version
+def resolution_streak(days):
+    streak = 0
+
+    for index, (steps, screen_time, pages) in enumerate(days, start=1):
+        if steps >= 10000 and screen_time <= 120 and pages >= 5:
+            streak += 1
+        else:
+            return f"Resolution failed on day {index}: {streak} day streak."
+
+    return f"Resolution on track: {streak} day streak."
+
+#even shorter
+def resolution_streak(days):
+    streak = 0
+
+    for day_number, day in enumerate(days, start=1):
+        if all([
+            day[0] >= 10000,
+            day[1] <= 120,
+            day[2] >= 5
+        ]):
+            streak += 1
+        else:
+            return f"Resolution failed on day {day_number}: {streak} day streak."
+
+    return f"Resolution on track: {streak} day streak."

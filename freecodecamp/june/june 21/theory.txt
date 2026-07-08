@@ -1,0 +1,44 @@
+If you want to round to the nearest multiple of k, divide by k, round, then multiply by k again.
+
+In your problem, the nearest even number means the nearest multiple of 2.
+
+Let's walk through your examples.
+
+Original	Divide by 2	round()	Multiply by 2	Result
+16.2	8.1	8	16	✅
+16.8	8.4	8	16	✅
+17.2	8.6	9	18	✅
+17.8	8.9	9	18	✅
+
+So instead of trying to decide whether to add 1 or subtract 1, you can directly round to the nearest even number.
+
+Code for rounding to the nearest even number
+day_time_hours = round((12 + (latitude / 90) * 12) / 2) * 2
+Let's test it mentally
+
+For latitude = 40:
+
+Formula:
+12 + (40 / 90) × 12
+= 17.333...
+Divide by 2:
+8.666...
+Round:
+9
+Multiply by 2:
+18
+
+So the rounded daytime hours are 18.
+
+One more thing
+
+This trick works for any multiple.
+
+Nearest multiple of 5:
+round(x / 5) * 5
+Nearest multiple of 10:
+round(x / 10) * 10
+Nearest multiple of 100:
+round(x / 100) * 100
+
+It's a useful pattern to remember because it appears in many programming problems.

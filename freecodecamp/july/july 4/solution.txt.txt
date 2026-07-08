@@ -1,0 +1,57 @@
+# def kaprekar(n):
+#     if n == 6174:
+#         return 0
+#     def ascending(number):
+#         digits=[]
+#         while number>0:
+#             digits.append(number%10)#find remainder and add to the digits
+#             number=number//10 #remove the last digit
+#         nums=sorted(digits)
+#         return int("".join(map(str, nums)))
+#     def descending(number):
+#         digits=[]
+#         while number>0:
+#             digits.append(number%10)#find remainder and add to the digits
+#             number=number//10 #remove the last digit
+#         nums=sorted(digits, reverse=True)
+#         return int("".join(map(str,nums)))
+        
+#     count=0
+#     while n != 6174:
+#         larger_number=descending(n)
+#         smaller_number=ascending(n)
+#         n=larger_number-smaller_number
+#         count+=1
+#         if n == 0:
+#             return count
+#     return count
+    
+# print(kaprekar(1234))
+def kaprekar(n):
+    count = 0
+
+    # If already 6174, no steps needed
+    if n == 6174:
+        return 0
+
+    while n != 6174:
+        # Convert number to 4-digit string (important for leading zeros)
+        num_str = f"{n:04d}"
+
+        # Create ascending and descending numbers
+        asc = int("".join(sorted(num_str)))
+        desc = int("".join(sorted(num_str, reverse=True)))
+
+        # Kaprekar step
+        n = desc - asc
+
+        count += 1
+
+        # Safety check (handles edge case like 0000)
+        if n == 0:
+            return count
+
+    return count
+
+
+print(kaprekar(1234))

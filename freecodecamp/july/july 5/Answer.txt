@@ -1,0 +1,49 @@
+def bucket_fill(grid, pos, new_value):
+    rows = len(grid)
+    cols = len(grid[0])
+
+    old_value = grid[pos[0]][pos[1]]
+
+    if old_value == new_value:
+        return grid
+
+    def dfs(r, c):
+        if r < 0 or r >= rows or c < 0 or c >= cols:
+            return
+
+        if grid[r][c] != old_value:
+            return
+
+        grid[r][c] = new_value
+
+        dfs(r - 1, c)  # up
+        dfs(r + 1, c)  # down
+        dfs(r, c - 1)  # left
+        dfs(r, c + 1)  # right
+
+    dfs(pos[0], pos[1])
+
+    return grid
+
+# def bucket_fill(grid, pos, new_value):
+#     rows=len(grid)
+#     cols=len(grid[0])
+#     player=grid[pos[0]][pos[1]]
+#     row=pos[0]
+#     col=pos[1]
+    
+#     grid[row][col]=new_value
+    
+#     if col-1>=0 and grid[row][col-1]==player:#check left side
+#         grid[row][col-1]=new_value
+#     if col+1<cols and grid[row][col+1]==player: #check right side
+#         grid[row][col+1]=new_value
+#     if row-1>=0 and grid[row-1][col]==player: #check up side
+#         grid[row-1][col]=new_value
+#     if row+1<rows and grid[row+1][col]==player: #check down side
+#         grid[row+1][col]=new_value
+   
+            
+#     return grid
+# print(bucket_fill([["R", "G"], ["R", "G"]], [0, 1], "B"), end="-")
+# print(bucket_fill([["Y", "G", "G"], ["Y", "Y", "Y"], ["B", "Y", "R"]], [1, 2], "B"))

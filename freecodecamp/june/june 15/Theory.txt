@@ -1,0 +1,72 @@
+Sorting techniques in Python
+
+Now the important part 👇
+
+1. Built-in sort (BEST)
+In-place
+arr = [3, 1, 2]
+arr.sort()
+print(arr)
+New list
+arr = [3, 1, 2]
+print(sorted(arr))
+2. Bubble Sort (learning only)
+def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        for j in range(n - i - 1):
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+    return arr
+
+Time: O(n²)
+
+3. Selection Sort
+def selection_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        min_idx = i
+        for j in range(i + 1, n):
+            if arr[j] < arr[min_idx]:
+                min_idx = j
+        arr[i], arr[min_idx] = arr[min_idx], arr[i]
+    return arr
+
+Time: O(n²)
+
+4. Insertion Sort
+def insertion_sort(arr):
+    for i in range(1, len(arr)):
+        key = arr[i]
+        j = i - 1
+        while j >= 0 and arr[j] > key:
+            arr[j + 1] = arr[j]
+            j -= 1
+        arr[j + 1] = key
+    return arr
+
+Good for nearly sorted data.
+
+5. Quick Sort (important interview)
+def quick_sort(arr):
+    if len(arr) <= 1:
+        return arr
+
+    pivot = arr[0]
+    left = [x for x in arr[1:] if x <= pivot]
+    right = [x for x in arr[1:] if x > pivot]
+
+    return quick_sort(left) + [pivot] + quick_sort(right)
+
+Average: O(n log n)
+
+Final takeaway
+
+For real Python work:
+
+Always prefer sorted() or .sort()
+
+Manual sorting algorithms are mainly for:
+
+interviews
+learning fundamentals

@@ -1,0 +1,133 @@
+| Algorithm/Technique       | Used For                                 | Time Complexity (Typical)           |
+| ------------------------- | ---------------------------------------- | ----------------------------------- |
+| Brute Force               | Try every possibility                    | Usually exponential or O(n²), O(n³) |
+| Sorting                   | Organizing data before solving           | O(n log n)                          |
+| Binary Search             | Searching in sorted data or answer space | O(log n)                            |
+| Two Pointers              | Arrays/strings with ordered traversal    | O(n)                                |
+| Sliding Window            | Continuous subarray/substring problems   | O(n)                                |
+| Hashing                   | Fast lookup/counting                     | O(1) average per operation          |
+| Prefix Sum                | Fast range sum queries                   | O(n) preprocessing                  |
+| Greedy                    | Local optimal choices                    | Usually O(n) or O(n log n)          |
+| Recursion                 | Divide problems into smaller ones        | Depends                             |
+| Backtracking              | Generate all valid solutions             | Exponential                         |
+| Divide and Conquer        | Split, solve, combine                    | Often O(n log n)                    |
+| Dynamic Programming (DP)  | Overlapping subproblems                  | Usually O(n²), O(nk), etc.          |
+| Graph Traversal (BFS/DFS) | Explore graphs/trees                     | O(V + E)                            |
+| Shortest Path             | Minimum distance in graphs               | O(E log V)                          |
+| Union-Find                | Connected components                     | Nearly O(1)                         |
+| Topological Sort          | Dependency ordering                      | O(V + E)                            |
+| Heap (Priority Queue)     | Efficient min/max retrieval              | O(log n)                            |
+| Trie                      | Prefix/string searching                  | O(L)                                |
+| Segment Tree/Fenwick Tree | Range queries and updates                | O(log n)                            |
+| Bit Manipulation          | Binary operations                        | O(1) per operation                  |
+
+
+
+What algorithm is used?
+
+A 2D grid can be treated as a graph.
+
+Each cell = a node (vertex).
+Adjacent cells (up, down, left, right) = edges.
+
+To visit every connected cell, we use a graph traversal algorithm.
+
+There are two common algorithms:
+
+1. Depth First Search (DFS) ⭐ (Most common for Bucket Fill)
+Go as deep as possible before coming back.
+Usually implemented using recursion.
+
+Example path:
+
+A
+|
+B
+|
+C
+|
+D
+
+Visit:
+
+A → B → C → D
+2. Breadth First Search (BFS)
+Visit all neighbors first.
+Uses a queue.
+
+Example:
+
+    A
+   / \
+  B   C
+ / \
+D   E
+
+Visit:
+
+A → B → C → D → E
+Is this Greedy?
+
+No.
+
+Greedy algorithms choose the "best" option at every step.
+
+Examples:
+
+Dijkstra
+Prim's
+Huffman Coding
+
+Bucket fill doesn't choose anything. It simply explores all connected cells.
+
+Is this Dynamic Programming?
+
+No.
+
+Dynamic Programming is used when:
+
+Problems have overlapping subproblems.
+Results can be reused (memoization).
+
+Examples:
+
+Fibonacci
+Knapsack
+Longest Common Subsequence
+
+Bucket fill has no overlapping subproblems.
+
+Is this Flood Fill?
+
+Yes!
+
+The problem itself is called the Flood Fill Algorithm.
+
+Flood Fill is usually implemented using:
+
+DFS ✅
+BFS ✅
+
+Paint programs (like MS Paint's paint bucket) use this algorithm.
+
+Why your code fails
+
+Your code only checks the starting cell.
+
+For example:
+
+G G G
+G G G
+G G G
+
+Start at the middle.
+
+Your code changes only:
+
+G B G
+B B B
+G B G
+
+But it never checks the newly changed cells again.
+
+Instead, after changing one neighbor, you must visit that neighbor and repeat the same process

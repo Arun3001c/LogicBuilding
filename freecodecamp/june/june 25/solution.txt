@@ -1,0 +1,62 @@
+# def parse_frontmatter(s):
+#     s=s.strip('-\n')
+#     s=s.split("\n")
+#     items=dict(item.split(": ",1) for item in s)
+#     return items
+# print(parse_frontmatter("---\ntitle: My Post\ndraft: false\nviews: 100\n---"))
+
+
+def parse_frontmatter(s):
+    s = s.strip('-\n')
+    lines = s.split('\n')
+
+    def convert(value):
+        if value == 'true':
+            return True
+        if value == 'false':
+            return False
+
+        try:
+            return int(value)
+        except ValueError:
+            pass
+
+        try:
+            return float(value)
+        except ValueError:
+            pass
+
+        return value
+
+    return {
+        key: convert(value)
+        for key, value in (line.split(': ', 1) for line in lines)
+    }
+
+
+#2nd solution
+def parse_frontmatter(s):
+    s=s.strip('-\n')
+    dict_values={}
+    # list_values=[]
+    # list_values.append(s.split("\n"))
+    list_values=s.split("\n")
+    for values in list_values:
+        key,value=values.split(": ",1)
+        if value == "true":
+            dict_values[key] = True
+        elif value == "false":
+            dict_values[key] = False
+        else:
+            # Try integer
+            try:
+                dict_values[key] = int(value)
+            except ValueError:
+                # Try float
+                try:
+                    dict_values[key] = float(value)
+                except ValueError:
+                    # Otherwise keep as string
+                    dict_values[key] = value
+    return dict_values
+print(parse_frontmatter("---\ntitle: My Post\ndraft: false\nviews: 100\n---"), end="")

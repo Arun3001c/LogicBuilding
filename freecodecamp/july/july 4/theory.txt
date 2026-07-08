@@ -1,0 +1,45 @@
+# Strings in Python are ITERABLE (can be looped character by character)
+# Example: "1234" → '1', '2', '3', '4'
+Take each character one by one:
+'1', '2', '3', '4'
+
+Put them in a list
+Sort them
+Return a list
+
+# Because of this, functions like sorted() can be applied to strings
+# sorted() takes each character, sorts them, and returns a LIST
+
+# Example:
+# sorted("3104") → ['0', '1', '3', '4']
+
+# Strings can contain characters, so sorting works for letters too
+# Example:
+# sorted("cab") → ['a', 'b', 'c']
+
+# IMPORTANT:
+# .sort() works ONLY on lists, not directly on strings
+# sorted() works on any iterable (strings, lists, tuples)
+
+# Example difference:
+# list("cab").sort() → modifies list in-place
+# sorted("cab") → returns new sorted list
+
+# f-string used for 4-digit formatting in Kaprekar routine
+# --------------------------------------------------------
+# f"{n:04d}" converts number n into a 4-digit string
+
+# Meaning of :04d
+# 0 → pad with zeros if digits are missing
+# 4 → total width must be 4 digits
+# d → treat as integer (decimal number)
+
+# Example:
+# n = 45   → f"{n:04d}" → "0045"
+# n = 7    → f"{n:04d}" → "0007"
+# n = 1234 → f"{n:04d}" → "1234"
+
+# Why we need this in Kaprekar routine:
+# • ensures every number has exactly 4 digits
+# • preserves leading zeros (important for correct sorting)
+# • allows proper digit rearrangement like 0001, 0134, etc.

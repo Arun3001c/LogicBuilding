@@ -1,0 +1,81 @@
+the most common mistakes people make when using isupper() and islower() in Python.
+
+1. Using the wrong capitalization
+
+Python method names are case-sensitive.
+
+❌ Incorrect:
+
+text.isUpper()
+text.isLower()
+
+✅ Correct:
+
+text.isupper()
+text.islower()
+
+3. Expecting isupper() to check for any uppercase letter
+
+isupper() returns True only if all letters are uppercase.
+
+text = "Hello"
+
+print(text.isupper())
+
+Output:
+
+False
+
+If you want to check whether a string contains at least one uppercase letter, use:
+
+any(c.isupper() for c in text)
+4. Expecting islower() to check for any lowercase letter
+text = "HELLo"
+
+print(text.islower())
+
+Output:
+
+False
+
+To check for at least one lowercase letter:
+
+any(c.islower() for c in text)
+5. Thinking numbers or symbols affect the result
+
+Numbers and punctuation are ignored.
+
+print("HELLO123!".isupper())   # True
+print("hello123!".islower())   # True
+6. Using strings with no letters
+
+If a string has no alphabetic characters, both methods return False.
+
+print("12345".isupper())   # False
+print("12345".islower())   # False
+
+This is because there are no cased letters to check.
+
+7. Comparing the result to True
+
+This is unnecessary.
+
+❌ Less Pythonic:
+
+if text.isupper() == True:
+    print("Yes")
+
+✅ Better:
+
+if text.isupper():
+    print("Yes")
+8. Confusing upper()/lower() with isupper()/islower()
+upper() and lower() change the string.
+isupper() and islower() check the string.
+text = "Hello"
+
+print(text.upper())      # "HELLO"
+print(text.lower())      # "hello"
+
+print(text.isupper())    # False
+print(text.islower())    # False

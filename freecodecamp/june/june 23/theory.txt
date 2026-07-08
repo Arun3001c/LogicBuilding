@@ -1,0 +1,68 @@
+Python Number Handling (round, int, floor, trunc)
+
+In Python, there are different ways to handle decimal numbers. Each method works differently depending on whether you want rounding, cutting off, or always going down.
+
+1. round()
+
+👉 Used for normal mathematical rounding.
+
+If decimal is 5 or more → rounds up
+If less than 5 → rounds down
+Example:
+round(5.678, 1) → 5.7
+round(5.64, 1)  → 5.6
+round(5.5)      → 6
+
+✔ Best for normal calculations (like BMI, averages)
+
+2. int()
+
+👉 Removes decimal part completely (no rounding)
+
+Example:
+int(5.9)  → 5
+int(5.1)  → 5
+int(-5.9) → -5
+
+✔ This is called truncation toward zero
+
+✔ Just cuts off decimal
+
+3. math.floor()
+
+👉 Always rounds DOWN to nearest integer
+
+Example:
+import math
+
+math.floor(5.9)  → 5
+math.floor(5.1)  → 5
+math.floor(-5.1) → -6
+
+✔ Always goes to smaller number
+✔ Works differently for negative numbers
+
+4. math.trunc()
+
+👉 Removes decimal part (same idea as int)
+
+Example:
+import math
+
+math.trunc(5.9)  → 5
+math.trunc(5.1)  → 5
+math.trunc(-5.9) → -5
+
+✔ Same as int() but clearer name
+
+QUICK SUMMARY
+Method	What it does	Example (5.678)
+round(x,1)	normal rounding	5.7
+int(x)	cuts decimal	5
+math.trunc(x)	cuts decimal	5
+math.floor(x)	always rounds down	5
+IMPORTANT IDEA
+round() → smart rounding
+int() → simple cut off
+trunc() → same as int
+floor() → always go down
