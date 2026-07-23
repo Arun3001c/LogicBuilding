@@ -1,0 +1,11 @@
+Word Blender
+Given two words, return a new word by combining the first half of the first word with the second half of the second word.
+
+For odd-length words, the first half is the shorter half.
+Tests:
+Passed:1. blend_words("turtle", "toucan") should return "turcan".
+Passed:2. blend_words("chipmunk", "flamingo") should return "chipingo".
+Passed:3. blend_words("falcon", "pelican") should return "falican".
+Passed:4. blend_words("hyena", "iguana") should return "hyana".
+Passed:5. blend_words("scorpion", "gorilla") should return "scorilla".
+Passed:6. blend_words("platypus", "wolverine") should return "platerine".

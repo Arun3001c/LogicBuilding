@@ -1,0 +1,7 @@
+normal code solved with conditional statements 
+
+but the concept that i missed is to use the extend since using multiple appends is not pythonic
+labels.append("bug")
+labels.append("needs triage")
+
+instead we can use like this labels.extend(["bug", "needs triage"])

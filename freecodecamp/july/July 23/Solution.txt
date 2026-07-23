@@ -1,0 +1,39 @@
+//my code
+def play_game(p1, p2):
+    p1_score=0
+    p2_score=0
+    for rounds in range(len(p1)):
+        if p1[rounds]=="C" and p2[rounds]=="C":
+            p1_score+=3
+            p2_score+=3
+        elif p1[rounds]=="D" and p2[rounds]=="D":
+            p1_score+=1
+            p2_score+=1
+        else:
+            if p1[rounds]=="C":
+                p1_score+=0
+                p2_score+=5
+            else:
+                p2_score+=0
+                p1_score+=5
+    return [p1_score,p2_score]
+
+//Ai version
+
+def play_game(player1, player2):
+    score1 = 0
+    score2 = 0
+
+    for p1, p2 in zip(player1, player2):
+        if p1 == 'C' and p2 == 'C':
+            score1 += 3
+            score2 += 3
+        elif p1 == 'D' and p2 == 'D':
+            score1 += 1
+            score2 += 1
+        elif p1 == 'D' and p2 == 'C':
+            score1 += 5
+        else:  # p1 == 'C' and p2 == 'D'
+            score2 += 5
+
+    return [score1, score2]

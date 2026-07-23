@@ -14,3 +14,11 @@ finally handling the edge cases where it becomes "zero" so checking the n.
 see the June soltace problem June 21 or 20th days
 =====================July 8====================================
 " Issue Trianlge " is just a if elif else code with simple comparing
+====================July 9=====================================
+"Issue Triage 2" solved using the conditional statements but here i learned of using the extend() it is used when to append multiple elements to list.
+===================July 21=====================================
+" Word Blender " in this we need to concatenate the first half from first word and second half from second half do using loops but the more pythonic way is to use slicing operator
+===================July 22====================================
+"Piggy Bank" here given a coins object we need to find the total amount solved using the dictionary methods and used f-strings here.
+===================July 23====================================
+" Game Theory " here for solving this we need to know fundamentals like iterating the string and comparison of strings and also i did the common mistakes like not using the zip () for comparison it makes two iterables.

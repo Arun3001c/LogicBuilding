@@ -1,0 +1,69 @@
+def triage_issue(title, labels):
+    if not labels:
+        if "error" in title or "bug" in title :
+            labels.append("bug")
+            labels.append("needs triage")
+        elif "feature" in title or "add" in title :
+            labels.append("enhancement")
+            labels.append("discussing")
+    else:
+        has_triage="needs triage" in labels
+        has_discussing="discussing" in labels
+        if "needs triage" in labels and ("simple" in title or "easy" in title):
+            labels.remove("needs triage")
+            labels.append("good first issue")
+        elif "discussing" in labels and ("planned" in title or "next" in title ):
+            labels.remove("discussing")
+            labels.append("on the roadmap")
+        
+        elif has_triage or has_discussing:
+            if has_triage:
+                labels.remove("needs triage")
+            if has_discussing:
+                labels.remove("discussing")
+            labels.append("help wanted")
+    if "security" in title:
+        labels.append("critical")
+    return labels
+
+
+#pythonic way
+def triage_issue(title, labels):
+    labels = labels.copy()
+    title = title.lower()
+
+    if not labels:
+        if "error" in title or "bug" in title:
+            labels.extend(["bug", "needs triage"])
+        elif "feature" in title or "add" in title:
+            labels.extend(["enhancement", "discussing"])
+
+    else:
+        has_triage = "needs triage" in labels
+        has_discussing = "discussing" in labels
+
+        if has_triage and ("simple" in title or "easy" in title):
+            labels.remove("needs triage")
+            if "good first issue" not in labels:
+                labels.append("good first issue")
+
+        elif has_discussing and ("planned" in title or "next" in title):
+            labels.remove("discussing")
+            if "on the roadmap" not in labels:
+                labels.append("on the roadmap")
+
+        elif has_triage or has_discussing:
+            if has_triage:
+                labels.remove("needs triage")
+            if has_discussing:
+                labels.remove("discussing")
+            if "help wanted" not in labels:
+                labels.append("help wanted")
+
+    if "security" in title and "critical" not in labels:
+        labels.append("critical")
+
+    return labels
+
+print(triage_issue("app crashes with error", []))
+print(triage_issue("app crashes with error", ["bug", "needs triage"]))

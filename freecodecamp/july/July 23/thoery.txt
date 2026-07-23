@@ -1,0 +1,15 @@
+here for the input taken is a string which is iterable so using zip() combines elements from two (or more) iterables position by position.
+
+letters = ['a', 'b', 'c']
+numbers = [1, 2, 3]
+
+for letter, number in zip(letters, numbers):
+    print(letter, number)
+
+output:
+
+a 1
+b 2
+c 3
+
+
