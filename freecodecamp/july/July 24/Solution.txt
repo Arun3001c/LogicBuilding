@@ -1,0 +1,47 @@
+# correct code
+def get_loan_schedule(loan_amount, annual_rate, monthly_payment):
+    
+    balance=[round(loan_amount)]
+    monthly_interst_rate=(annual_rate/100)/12
+    
+    while loan_amount>0:
+        intrest= loan_amount*monthly_interst_rate
+        
+        loan_amount += intrest
+    
+        loan_amount =(loan_amount- monthly_payment)
+        if loan_amount < 0:
+            loan_amount = 0
+        
+        balance.append(round(loan_amount))
+    
+    return balance
+
+# wrong code 
+
+
+def get_loan_schedule(loan_amount, annual_rate, monthly_payment):
+    
+    balance=[round(loan_amount)]
+    monthly_interst_rate=(annual_rate/100)/12
+    
+    while loan_amount>0:
+        intrest= loan_amount*monthly_interst_rate
+        
+        loan_amount += intrest
+    
+        loan_amount =round(loan_amount- monthly_payment)
+        if loan_amount < 0:
+            loan_amount = 0
+        
+        balance.append(loan_amount)
+    
+    return balance
+    
+print( get_loan_schedule(1000, 0, 200) )
+
+print(get_loan_schedule(1000, 5, 200))
+
+
+# the difference the round the original value and rounding the appended value 
+so by rounding the original value makes change of direct loan amount and rounding the appended value only modifies the list value by keeping the original values loan amount same 

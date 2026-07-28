@@ -1,0 +1,53 @@
+#my code
+def fractional_knapsack(n, w, weights, values):
+    ratios=[0]*n
+    for i in range(n):
+        ratios[i]=values[i]/weights[i]
+    items=list(zip(weights, values, ratios))
+    items.sort(key=lambda x: x[2],reverse=True)
+    total_value=0
+    print(items)
+    for item in items:
+        if w>=item[0]:
+            total_value+=item[1]
+            w-=item[0]
+        else:
+            total_value += (w/item[0])*item[1]
+            break
+    print(total_value)
+
+fractional_knapsack(3,50,[10,20,30],[60,100,120])
+
+#ai version code 
+def fractional_knapsack(weights, values, capacity):
+
+    items = []
+
+    # Store (value per kg, weight, value)
+    for i in range(len(weights)):
+        ratio = values[i] / weights[i]
+        items.append((ratio, weights[i], values[i]))
+
+    # Sort by ratio in descending order
+    items.sort(reverse=True)
+
+    total_value = 0
+
+    for ratio, weight, value in items:
+
+        if capacity >= weight:
+            total_value += value
+            capacity -= weight
+
+        else:
+            total_value += ratio * capacity
+            break
+
+    return total_value
+
+
+weights = [10, 20, 30]
+values = [60, 100, 120]
+capacity = 50
+
+print(fractional_knapsack(weights, values, capacity))

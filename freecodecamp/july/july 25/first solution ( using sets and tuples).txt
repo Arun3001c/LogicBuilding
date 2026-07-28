@@ -1,0 +1,56 @@
+def find_signal(grid):
+    rows= len(grid)
+    cols=len(grid[0])
+    common_items=set()
+    index=0
+    for row in range(rows):
+        
+        for col in range(cols):
+            if grid[row][col]!=0:
+                items=[]
+                value=grid[row][col]
+                #check row
+                forward=col+value
+                backward=col-value
+                
+                if forward<cols and grid[row][forward] == 0:
+                    items.append((row,forward))
+                if backward>=0 and grid[row][backward]==0:
+                    items.append((row,backward))
+                # //check column
+                top=row-value
+                bottom=row+value
+                if top>=0 and grid[top][col]==0:
+                    items.append((top,col))
+                if bottom<rows and grid[bottom][col]==0:
+                    items.append((bottom, col))
+                # check horizontal upperside
+                #upper backward
+                if row-value>=0 and col-value>0 and grid[row-value][col-value]==0:
+                    items.append((row-value,col-value))
+                #upper forward
+                if row-value>=0 and col+value<cols and grid[row-value][col+value]==0:
+                    items.append((row-value, col+value))
+                #chech horizontal down side
+                #down backside
+                if row+value <rows and col-value>=0 and grid[row+value][col-value]==0:
+                    items.append((row+value, col-value))
+                #down forward side
+                if row+value<rows and col+value< cols and grid[row+value][col+value]==0:
+                    items.append((row+value,col+value))
+                #print items
+                # print(items , " these are items")
+                if not common_items:
+                    common_items.update(items)
+                else:
+                    common_items=common_items.intersection(items)
+                # print(f"these are comn {common_items}")
+                
+                
+    return common_items
+    
+print(find_signal([[0, 0, 1], [0, 1, 0], [0, 0, 1]]))
+print(find_signal([[0, 2, 0], [1, 0, 0], [0, 0, 1]]))
+print(find_signal([[0, 0, 2, 0], [0, 0, 0, 0], [2, 0, 0, 0], [0, 0, 0, 1]]))
+print(find_signal([[0, 3, 0, 0, 0], [0, 0, 0, 0, 2], [0, 0, 0, 0, 0], [4, 0, 0, 0, 0], [0, 0, 0, 0, 0]]))
+print(find_signal([[3, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 2, 0, 0, 0, 2]]))

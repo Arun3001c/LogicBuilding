@@ -1,1 +1,9 @@
 July 23
+
+algorithms -> greedy -> maximum cookies -> solution 3 
+
+algorithms -> greedy -> lemonade -> solution
+
+July 27 "solution " file this contains the brute force method and complex code written by me instead of simple logic so this helps you.
+
+July 11 in the ai version it handles better for the handling counts with the .get(d,0) +1 but in the code solved by me has just code.

@@ -1,0 +1,103 @@
+Greedy Problem #6: Fractional Knapsack ⭐⭐⭐⭐⭐
+Problem Statement
+
+A thief enters a jewelry store carrying a bag.
+
+The bag can hold a maximum weight of W kilograms.
+
+There are N items in the store.
+
+Each item has:
+
+Weight
+Value
+
+The thief wants to maximize the total value of the items placed in the bag.
+
+Special Rule
+
+Unlike the normal knapsack problem,
+
+The thief is allowed to take a fraction of an item.
+
+For example,
+
+Suppose an item weighs 10 kg and is worth ₹100.
+
+If only 4 kg of space is left,
+
+the thief can take 4/10 of the item and receive
+
+4/10 × 100 = ₹40
+Input Format
+N W
+N → Number of items
+W → Capacity of the bag
+
+Next line:
+
+Weight1 Weight2 Weight3 ... WeightN
+
+Next line:
+
+Value1 Value2 Value3 ... ValueN
+Output Format
+
+Print the maximum value that can be obtained.
+
+Example 1
+Input
+3 50
+10 20 30
+60 100 120
+Output
+240
+Explanation
+
+Bag Capacity
+
+50 kg
+
+Items
+
+Weight	Value
+10	60
+20	100
+30	120
+
+Take
+
+Entire 10 kg item
+Entire 20 kg item
+
+Weight used
+
+30 kg
+
+Remaining
+
+20 kg
+
+Take
+
+20/30
+
+of the last item.
+
+Value obtained
+
+60 + 100 + 80 = 240
+Example 2
+Input
+4 10
+5 4 6 3
+10 40 30 50
+Output
+105
+Example 3
+Input
+2 15
+10 20
+100 120
+Output
+130

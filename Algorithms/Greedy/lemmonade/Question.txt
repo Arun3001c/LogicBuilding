@@ -1,0 +1,247 @@
+Greedy Problem #5: Lemonade Change ⭐⭐
+Problem Statement
+
+You are selling lemonade.
+
+Each lemonade costs ₹5.
+
+Customers come one by one in the given order.
+
+Each customer buys exactly one lemonade and pays with one of these bills:
+
+₹5
+₹10
+₹20
+
+Initially, you have no money.
+
+For every customer, you must give the correct change immediately.
+
+If at any point you cannot give the required change, return False.
+
+If you successfully serve every customer, return True.
+
+Input
+
+An array of integers representing the bills paid by customers.
+
+Example:
+
+[5, 5, 5, 10, 20]
+Output
+
+Return
+
+True
+
+or
+
+False
+Example 1
+Input
+5 5 5 10 20
+Output
+True
+Explanation
+Customer pays 5
+Cash: [5]
+
+Customer pays 5
+Cash: [5,5]
+
+Customer pays 5
+Cash: [5,5,5]
+
+Customer pays 10
+Give one ₹5
+Cash: [5,5,10]
+
+Customer pays 20
+Give ₹10 + ₹5
+Cash: [5,20]
+
+Everyone received correct change.
+Example 2
+Input
+5 5 10 10 20
+Output
+False
+Explanation
+After serving first four customers
+
+Cash:
+
+₹5 bills = 0
+₹10 bills = 2
+
+Now a customer pays ₹20.
+
+Need ₹15 change.
+
+Cannot give ₹10 + ₹5
+(No ₹5 bill)
+
+Cannot give ₹5 + ₹5 + ₹5
+
+Return False.
+Example 3
+Input
+5 10
+Output
+True
+Example 4
+Input
+10
+Output
+False
+
+Why?
+
+The very first customer pays ₹10.
+
+You have no ₹5 bill to return change.
+
+Now let's answer the four questions.
+
+These four questions are what you should ask yourself for every greedy problem.
+
+1. What information do I need to remember?
+
+Ask yourself:
+
+What information from previous decisions affects the future?
+
+Here, we don't care about the actual bills.
+
+We only care about how many bills of each useful denomination we have.
+
+So we store
+
+five = 0
+ten = 0
+
+We do not store ₹20 bills because they are never used to make change.
+
+2. What is the greedy decision?
+
+Whenever a customer pays ₹20,
+
+there are two ways to return ₹15.
+
+Option A
+
+₹10 + ₹5
+
+Option B
+
+₹5 + ₹5 + ₹5
+
+The greedy decision is
+
+Always prefer giving ₹10 + ₹5 if possible.
+
+3. Why is that greedy decision safe?
+
+This is the most important question.
+
+Suppose your cash box contains
+
+₹5 bills = 3
+
+₹10 bills = 1
+
+If you return
+
+₹10 + ₹5
+
+Remaining
+
+₹5 bills = 2
+
+₹10 bills = 0
+
+If instead you return
+
+₹5 + ₹5 + ₹5
+
+Remaining
+
+₹5 bills = 0
+
+₹10 bills = 1
+
+Which situation is better?
+
+The first one.
+
+Why?
+
+Because ₹5 bills are more flexible.
+
+A future customer paying ₹10 always requires a ₹5 bill as change.
+
+Without ₹5 bills, you cannot serve them.
+
+So preserving ₹5 bills increases your chances of serving future customers.
+
+This is why the greedy choice is safe.
+
+4. How do I update my stored information?
+
+Every customer changes the state of our cash box.
+
+Customer pays ₹5
+
+Receive a ₹5 bill.
+
+five += 1
+Customer pays ₹10
+
+Need one ₹5 as change.
+
+If
+
+five > 0
+
+then
+
+five -= 1
+ten += 1
+
+Otherwise
+
+return False
+Customer pays ₹20
+
+Need ₹15 change.
+
+First try
+
+₹10 + ₹5
+
+If available
+
+ten -= 1
+five -= 1
+
+Otherwise try
+
+₹5 + ₹5 + ₹5
+
+If available
+
+five -= 3
+
+Otherwise
+
+return False
+Greedy Pattern Summary
+
+Whenever you solve a greedy problem, fill in this table before coding:
+
+Question	Answer for Lemonade Change
+What is the objective?	Serve every customer successfully
+What information do I need to remember?	Number of ₹5 bills and ₹10 bills
+What is the greedy decision?	Use ₹10 + ₹5 before ₹5 + ₹5 + ₹5
+Why is that safe?	It preserves ₹5 bills, which are more useful for future change
+How do I update my information?	Adjust the five and ten counters after each customer

@@ -1,0 +1,79 @@
+#my code
+def lemmonade_change(bills):
+    
+    tens_count=0
+    five_count=0
+    
+    for bill in bills:
+        
+        if bill==5:
+            five_count+=1
+        elif bill==10:
+            if five_count<=0:
+                return False
+            else:
+                tens_count += 1
+                five_count-=1
+        elif bill==20:
+            if tens_count>0 and five_count>0:
+                tens_count-=1
+                five_count-=1
+            elif tens_count==0 and five_count>=3:
+                five_count-=3
+            else:
+                return False
+    
+    return True
+    
+print(lemmonade_change([5, 5, 5, 10, 20]))
+print(lemmonade_change([5,5,10,10,20]))
+print(lemmonade_change([5, 5, 20]))
+
+
+// ai version
+
+def lemonade_change(bills):
+
+    five_count = 0
+    ten_count = 0
+
+    for bill in bills:
+
+        # Customer pays ₹5
+        if bill == 5:
+            five_count += 1
+
+        # Customer pays ₹10
+        elif bill == 10:
+
+            if five_count == 0:
+                return False
+
+            five_count -= 1
+            ten_count += 1
+
+        # Customer pays ₹20
+        else:
+
+            # Greedy choice: Prefer ₹10 + ₹5
+            if ten_count > 0 and five_count > 0:
+                ten_count -= 1
+                five_count -= 1
+
+            # Otherwise give three ₹5 bills
+            elif five_count >= 3:
+                five_count -= 3
+
+            # Cannot give change
+            else:
+                return False
+
+    return True
+
+
+# Test Cases
+print(lemonade_change([5, 5, 5, 10, 20]))      # True
+print(lemonade_change([5, 5, 10, 10, 20]))     # False
+print(lemonade_change([5, 10]))                # True
+print(lemonade_change([10]))                   # False
+print(lemonade_change([5, 5, 20]))             # False

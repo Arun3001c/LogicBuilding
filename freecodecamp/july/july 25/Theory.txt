@@ -1,0 +1,18 @@
+
+---
+
+Both are correct.
+
+For interviews, I would actually prefer your approach because it shows you understand the problem as a **constraint intersection problem**.
+
+One more important observation: your thinking is moving toward a powerful pattern used in many problems:
+
+- Sudoku → possible values for each cell → intersection/elimination
+- Scheduling → possible time slots → remove conflicts
+- Maps/GPS → possible locations → narrow down candidates
+
+The core idea is:
+
+> Each condition creates a set of possibilities. The answer is where all conditions overlap. 
+
+That's exactly what you discovered here.

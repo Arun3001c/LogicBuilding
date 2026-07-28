@@ -1,0 +1,50 @@
+def five_dice(dice):
+    # Count occurrences of each dice value
+    counts = {}
+
+    for die in dice:
+        counts[die] = counts.get(die, 0) + 1
+
+    frequencies = sorted(counts.values(), reverse=True)
+
+    # Five of a kind
+    if frequencies[0] == 5:
+        return "five of a kind"
+
+    # Four of a kind
+    if frequencies[0] == 4:
+        return "four of a kind"
+
+    # Full house
+    if frequencies[0] == 3 and frequencies[1] == 2:
+        return "full house"
+
+    # Check straights
+    unique = sorted(set(dice))
+
+    # Large straight
+    if unique == [1, 2, 3, 4, 5] or unique == [2, 3, 4, 5, 6]:
+        return "large straight"
+
+    # Small straight
+    if (
+        [1, 2, 3, 4] == unique[:4] or
+        [2, 3, 4, 5] == unique[:4] or
+        [3, 4, 5, 6] == unique[:4]
+    ):
+        return "small straight"
+
+    # Three of a kind
+    if frequencies[0] == 3:
+        return "three of a kind"
+
+    # Two pair
+    if frequencies.count(2) == 2:
+        return "two pair"
+
+    # Pair
+    if 2 in frequencies:
+        return "pair"
+
+    # Nothing
+    return "no pair"

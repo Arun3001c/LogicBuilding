@@ -1,0 +1,66 @@
+here in the solution file there are two codes one is wrong and correct the only difference is rounding the original value and appending value
+
+Imagine:
+
+Current loan balance after payment = 100.60
+Monthly interest rate = 10% (just to make the difference visible)
+Payment = 0 (ignore payment for this example)
+Your code (rounding the original balance)
+
+You do:
+
+loan_amount = round(100.60)
+
+Python changes the real balance:
+
+100.60 → 101
+
+Now next month interest:
+
+101 × 10% = 10.10
+
+New balance:
+
+101 + 10.10 = 111.10
+Correct approach (keep original value)
+
+You keep:
+
+loan_amount = 100.60
+
+Next month interest:
+
+100.60 × 10% = 10.06
+
+New balance:
+
+100.60 + 10.06 = 110.66
+
+Now compare:
+
+	Balance used next month
+Your code	111.10
+Correct	110.66
+
+Difference:
+
+111.10 - 110.66 = 0.44
+
+You created extra debt because you rounded before calculating future interest.
+
+In your loan problem, the same thing happens slowly:
+
+Actual balance: 819.10
+Your rounded balance: 819
+
+Actual interest:
+819.10 × rate
+
+Your interest:
+819 × rate
+
+Sometimes your number is higher, sometimes lower. After many months those tiny differences can change the final rounded answers.
+
+The rule to remember:
+
+Never change the real value just because you need a rounded display value. Store the rounded value, but keep calculating with the original value.

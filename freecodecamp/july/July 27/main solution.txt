@@ -1,0 +1,50 @@
+# with math
+import math
+
+def is_pronic(n):
+    if n < 0:
+        return False
+
+    k = int(math.sqrt(n))
+    return k * (k + 1) == n
+
+# ai version but this is the simple logic
+def is_pronic(n):
+    if n < 0:
+        return False
+
+    i = 0
+    while i * (i + 1) < n:
+        i += 1
+    return i * (i + 1) == n
+
+the written logic is failed because code is this 
+
+Your approach checks factor pairs, but it misses the case n = 0 because:
+def factors(n):
+    values=[]
+    def is_protonic(values):
+        for i in range(1,len(values)):
+            if values[i]==values[i-1] +1 and values[i] * values[i-1] == n:
+                return True
+        return False
+    for i in range(1,n+1):
+        if n%i==0:
+            values.append(i)
+    
+    return [is_protonic(values), values]
+
+print(factors(6))
+print(factors(15))
+print(factors(12))
+print(factors(132))
+print(factors(80))
+print(factors(0))
+
+
+range(1, n+1) becomes range(1, 1), so no factors are added.
+Therefore values remains empty and the function returns False.
+
+Also, checking factors is more complicated than necessary. A pronic number is simply:
+
+n=k(k+1)

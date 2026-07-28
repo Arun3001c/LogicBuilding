@@ -1,0 +1,117 @@
+for solving this i got a thought to use the length and next the normal if else conditional statements and implemented.. 
+and for the consecutive i used the set and today i solved few problems on sets so i used the concept of subset and here it is learned from ai just by checking all posibillities
+#using sets
+s = set(dice)
+
+if s == {1,2,3,4,5} or s == {2,3,4,5,6}:
+    return "large straight"
+
+if ({1,2,3,4} <= s or
+    {2,3,4,5} <= s or
+    {3,4,5,6} <= s):
+    return "small straight" 
+
+#other way
+
+if unique == [1,2,3,4,5] or unique == [2,3,4,5,6]:
+    return "large straight"
+
+if ([1,2,3,4] == unique[:4] or
+    [2,3,4,5] == unique[:4] or
+    [3,4,5,6] == unique[:4] or
+    (len(unique) == 5 and (
+        unique[1:] == [2,3,4,5] or
+        unique[1:] == [3,4,5,6]
+    ))):
+    return "small straight"
+
+next i got the other doubt as circular things so then i again used checked the logic as 
+def five_dice(dice):
+    values = {}
+
+    # Count dice values
+    for i in dice:
+        if i not in values:
+            values[i] = 1
+        else:
+            values[i] += 1
+
+    # Five of a kind
+    if len(values) == 1:
+        return "five of a kind"
+
+    # Four of a kind or full house
+    elif len(values) == 2:
+        if 4 in values.values():
+            return "four of a kind"
+        else:
+            return "full house"
+
+    # Three of a kind or two pair
+    elif len(values) == 3:
+        if 2 in values.values():
+            return "two pair"
+        else:
+            return "three of a kind"
+
+    # Pair
+    elif len(values) == 4:
+        return "pair"
+
+    # Straight checks
+    else:
+        unique = sorted(set(dice))
+
+        # Normal large straight
+        if unique == [1, 2, 3, 4, 5] or unique == [2, 3, 4, 5, 6]:
+            return "large straight"
+
+        # Circular large straight
+        # Example: [5,6,1,2,3]
+        circular_large = [
+            {1,2,3,4,5},
+            {2,3,4,5,6},
+            {3,4,5,6,1},
+            {4,5,6,1,2},
+            {5,6,1,2,3},
+            {6,1,2,3,4}
+        ]
+
+        if set(dice) in circular_large:
+            return "large straight"
+
+        # Circular small straight
+        circular_small = [
+            {1,2,3,4},
+            {2,3,4,5},
+            {3,4,5,6},
+            {4,5,6,1},
+            {5,6,1,2},
+            {6,1,2,3}
+        ]
+
+        for straight in circular_small:
+            if straight <= set(dice):
+                return "small straight"
+
+    return "no pair"
+
+this is the using all manual combinations.
+
+and now the below is for the iteration code 
+def is_large_straight(dice):
+    dice = sorted(dice)
+
+    for start in range(5):
+        rotated = dice[start:] + dice[:start]
+
+        count = 0
+
+        for i in range(1, len(rotated)):
+            if (rotated[i] - rotated[i-1]) % 6 == 1:
+                count += 1
+
+        if count == 4:
+            return True
+
+    return False

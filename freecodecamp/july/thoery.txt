@@ -16,9 +16,20 @@ see the June soltace problem June 21 or 20th days
 " Issue Trianlge " is just a if elif else code with simple comparing
 ====================July 9=====================================
 "Issue Triage 2" solved using the conditional statements but here i learned of using the extend() it is used when to append multiple elements to list.
+====================July 11====================================
+" Five Dice " i just got a thought of solving this using dictionary since it is just having few numbers and solved by the count so it is solved with that read the theory since i used the concept of circular iteration.
 ===================July 21=====================================
 " Word Blender " in this we need to concatenate the first half from first word and second half from second half do using loops but the more pythonic way is to use slicing operator
 ===================July 22====================================
 "Piggy Bank" here given a coins object we need to find the total amount solved using the dictionary methods and used f-strings here.
 ===================July 23====================================
 " Game Theory " here for solving this we need to know fundamentals like iterating the string and comparison of strings and also i did the common mistakes like not using the zip () for comparison it makes two iterables.
+==================July 24=====================================
+" Loan Calculator " here it is solved using the math and normal loops so here the main task or thing that i have learned by doing mistake is Never change the real value just because you need a rounded display value. Store the rounded value, but keep calculating with the original value. [ see the correct and wrong codes in solution file]. 
+=================July 25======================================
+" Cell Signal " here at first i don't understand the scenario later i got that so solved using the set and later the question asks in the list so list version is returned and again asked ai to give the answer. it helps you to solve the 2d array problems.
+=================July 26======================================
+" Letter Distance " here for solving this we need to iterate in the circular direction so here we use % modulo operator so again we get to know the nearest multiple concept and see theory on how modulo works and see the code on how the circular iteration is achieved and see how  % works on -ve numbers
+==================July 27=====================================
+" pronic number " here i solved this with the knowing the factors and next checked the logic but the missed the main thing that the protonic number means k*(k+1) == n so for example :
+	6 =2 * 3 so instead of checking all these combinations i find the factors and done something so the main code just checks these combinations like 0, 2, 6, 12 ,... so here we reduce the iterations upto that number.

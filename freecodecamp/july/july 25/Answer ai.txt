@@ -1,0 +1,81 @@
+#method 1 brute force 
+
+def find_signal(grid):
+    rows = len(grid)
+    cols = len(grid[0])
+
+    # collect towers
+    towers = []
+    for r in range(rows):
+        for c in range(cols):
+            if grid[r][c] != 0:
+                towers.append((r, c, grid[r][c]))
+
+    # check every empty cell
+    for r in range(rows):
+        for c in range(cols):
+            if grid[r][c] == 0:
+
+                valid = True
+
+                for tr, tc, distance in towers:
+                    actual_distance = max(abs(r - tr), abs(c - tc))
+
+                    if actual_distance != distance:
+                        valid = False
+                        break
+
+                if valid:
+                    return [r, c]
+
+
+#method 2
+
+def find_signal(grid):
+    rows = len(grid)
+    cols = len(grid[0])
+
+    tower_positions = []
+
+    # find towers
+    for r in range(rows):
+        for c in range(cols):
+            if grid[r][c] != 0:
+                tower_positions.append((r, c, grid[r][c]))
+
+
+    possible_positions = None
+
+
+    for tr, tc, distance in tower_positions:
+
+        current_positions = set()
+
+        # generate all cells
+        for r in range(rows):
+            for c in range(cols):
+
+                # only consider empty cells
+                if grid[r][c] == 0:
+
+                    actual_distance = max(
+                        abs(r - tr),
+                        abs(c - tc)
+                    )
+
+                    if actual_distance == distance:
+                        current_positions.add((r, c))
+
+
+        # first tower
+        if possible_positions is None:
+            possible_positions = current_positions
+
+        # intersection with previous towers
+        else:
+            possible_positions = possible_positions & current_positions
+
+
+    answer = possible_positions.pop()
+
+    return [answer[0], answer[1]]

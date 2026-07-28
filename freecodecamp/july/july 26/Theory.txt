@@ -1,0 +1,30 @@
+# Forward distance means: starting from the current letter (start),
+# how many steps do we move forward to reach the target letter (end)?
+# Example: a -> d = 3 steps, so we calculate end - start.
+# % 26 is used because the alphabet is a circle. It wraps around after z.
+forward = (end - start) % 26
+
+
+# Backward distance means: starting from the current letter (start),
+# how many steps do we move backward to reach the target letter (end)?
+# Example: d -> a = 3 steps, so we calculate start - end.
+# % 26 handles cases where we cross the beginning of the alphabet.
+backward = (start - end) % 26
+
+
+# Since the alphabet is circular, the shortest path can be either forward
+# or backward, so we choose the smaller distance.
+distance = min(forward, backward)
+
+here while solving this i get to know for circular we use the % (modulo) operator and solving the doubts checked the July 7 problem which is nearest multiple of k so there seeing that code i get to know that code is exactly as the how modulo works in python 
+
+Python's % operator returns the remainder with the same sign as the divisor (the second number). The formula is:
+
+a%b=a−(b×floor(a/b))
+
+so it subtracts with the number of values it fits for example: 29 %5 = 29 - ( number of 5 fits in that) which is also means 29- 25 =4 which is remainder similarly with negative is the heart for the circular concept of forwarding and backwarding
+
+-26%5=4 
+since by the example and i get to know that applying the % (modulo) for the negative numbers it returns how much is needed for that number to get divisible 
+
+same concept for this circular rotation and the nearest multiples also...

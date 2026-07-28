@@ -1,0 +1,35 @@
+def children_satisfied(greedy_of_children, size_of_cookies):
+    
+    greedy_of_children.sort()
+    
+    # size_of_cookies.sort()
+    cookies=sorted(size_of_cookies)
+    satisfied=0
+    def next_biggest(arr, target):
+        left = 0
+        right = len(arr) - 1
+        ans = None
+    
+        while left <= right:
+            mid = (left + right) // 2
+    
+            if arr[mid] == target:
+                return arr[mid]
+            elif arr[mid] > target:
+                ans = arr[mid]      # Possible answer
+                right = mid - 1     # Look for a smaller valid answer
+            else:
+                left = mid + 1
+    
+        return ans
+    # for i in range(len(greedy_of_children)):
+    for children_greed in greedy_of_children:
+        value=next_biggest(cookies, children_greed)
+        
+        if value is not None:
+            satisfied+=1
+            cookies.remove(value)
+            
+            
+    return satisfied
+print(children_satisfied([2,3,5], [1,2,4,6]))
