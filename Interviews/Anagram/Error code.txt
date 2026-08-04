@@ -1,0 +1,58 @@
+
+def is_anagram(s,t):
+    s_dict={}
+    t_dict={}
+    for char in s:
+        s_dict[char]=s_dict.get(char,0) + 1
+    for char in t:
+        t_dict[char]=t_dict.get(char,0)+1
+    for key in s_dict.keys():
+        if s_dict[key] != t_dict[key]:
+            return False
+    return True
+    
+print(is_anagram(s = "anagram",t = "nagaram"))
+
+
+Your logic works for:
+
+s = "anagram"
+t = "nagaram"
+
+But consider:
+
+s = "a"
+t = "aa"
+
+Your dictionaries:
+
+s_dict = {'a':1}
+t_dict = {'a':2}
+
+Your loop checks:
+
+if s_dict['a'] != t_dict['a']:
+
+Returns False ✅
+
+Good.
+
+But now consider:
+
+s = "ab"
+t = "ac"
+
+Dictionaries:
+
+s_dict = {'a':1,'b':1}
+t_dict = {'a':1,'c':1}
+
+Your loop checks:
+
+a → equal
+b → tries t_dict['b']
+This gives:
+
+KeyError: 'b'
+
+because b doesn't exist in t_dict.

@@ -1,0 +1,38 @@
+def decode_morse(code):
+    morse_code = {
+    "A": ".-",
+    "B": "-...",
+    "C": "-.-.",
+    "D": "-..",
+    "E": ".",
+    "F": "..-.",
+    "G": "--.",
+    "H": "....",
+    "I": "..",
+    "J": ".---",
+    "K": "-.-",
+    "L": ".-..",
+    "M": "--",
+    "N": "-.",
+    "O": "---",
+    "P": ".--.",
+    "Q": "--.-",
+    "R": ".-.",
+    "S": "...",
+    "T": "-",
+    "U": "..-",
+    "V": "...-",
+    "W": ".--",
+    "X": "-..-",
+    "Y": "-.--",
+    "Z": "--.." }
+    codes= code.split()
+    word=""
+    for c in codes:
+        letter=next((k for k, v in morse_code.items() if v == c ),None)
+        word+=letter
+        
+    return word
+    
+print(decode_morse("--.."))
+print(decode_morse("... --- ..."))

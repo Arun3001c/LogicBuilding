@@ -1,0 +1,63 @@
+Matchbox Stacking Problem
+
+A warehouse contains N matchboxes, each with a different weight. The boxes must be stacked according to the following rule:
+
+A matchbox can be placed on top of another matchbox only if its weight is less than the weight of the box below it.
+
+If a matchbox cannot be placed on any existing stack, a new stack must be created.
+
+Your task is to determine the minimum number of stacks required to arrange all the matchboxes.
+
+
+Input Format:
+
+The first line contains an integer N, the number of matchboxes.
+
+The second line contains N space-separated integers representing the weights of the matchboxes.
+
+
+Output Format:
+
+Print a single integer representing the minimum number of stacks required.
+
+
+Constraints:
+
+1 ≤ N ≤ 10^5
+
+
+Example 1:
+
+Input:
+6
+4 2 5 1 3 6
+
+Output:
+3
+
+Explanation:
+
+One possible arrangement is:
+
+Stack 1: 4 → 2 → 1
+Stack 2: 5 → 3
+Stack 3: 6
+
+Hence, the minimum number of stacks is 3.
+
+
+Example 2:
+
+Input:
+4
+4 2 3 1
+
+Output:
+2
+
+Explanation:
+
+Stack 1: 4 → 2 → 1
+Stack 2: 3
+
+So the minimum number of stacks required is 2.

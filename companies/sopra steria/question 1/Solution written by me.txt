@@ -1,0 +1,21 @@
+num = int(input("Enter a number: "))
+
+sd = 0
+temp = num
+maxi = 0
+
+def sum_of_digits(n):
+    total = 0
+    while n > 0:
+        rem = n % 10
+        total += rem
+        n = n // 10
+    return total
+
+for i in range(temp, temp - 100, -1):
+    value = sum_of_digits(i)
+    if value > sd:
+        sd = value
+        maxi = i
+
+print(maxi)

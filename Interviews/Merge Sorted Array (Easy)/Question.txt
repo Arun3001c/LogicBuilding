@@ -1,0 +1,26 @@
+Merge Sorted Array (Easy)
+Problem Statement
+
+You are given two sorted integer arrays nums1 and nums2, and two integers m and n.
+
+nums1 has a length of m + n, where the last n elements are 0 and should be ignored.
+Merge nums2 into nums1 as one sorted array.
+Modify nums1 in-place.
+Example
+nums1 = [1,2,3,0,0,0]
+m = 3
+
+nums2 = [2,5,6]
+n = 3
+
+Output:
+[1,2,2,3,5,6]
+Another Example
+nums1 = [1]
+m = 1
+
+nums2 = []
+n = 0
+
+Output:
+[1]

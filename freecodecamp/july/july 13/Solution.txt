@@ -1,0 +1,10 @@
+//my code 
+def get_tally_count(s):
+    count=0
+    for pipe in s:
+        if pipe=="|" or pipe== "/":
+            count+=1
+    return count
+//Ai version
+def get_tally_count(tally):
+    return tally.count("|") + tally.count("/")

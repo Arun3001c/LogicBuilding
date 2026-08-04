@@ -1,0 +1,45 @@
+
+Problem Statement
+Given two strings s and t, return True if t is an anagram of s, and False otherwise.
+
+An anagram means both strings contain the same characters with the same frequencies, but possibly in a different order.
+
+Examples
+
+Input:
+s = "anagram"
+t = "nagaram"
+
+Output:
+True
+
+Input:
+s = "rat"
+t = "car"
+
+Output:
+False
+
+Input:
+s = "listen"
+t = "silent"
+
+Output:
+True
+
+Frequencies means the number of times each character appears in a string.
+
+For an anagram, we need the characters and their counts to be exactly the same.
+
+Example:
+
+s = "anagram"
+
+
+Count each character:
+
+a → 3 times
+n → 1 time
+g → 1 time
+r → 1 time
+m → 1 time

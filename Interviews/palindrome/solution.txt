@@ -1,0 +1,27 @@
+//written code
+def palindrom(s):
+    
+    clean="".join(char.lower()for char in s if char.isalnum())
+    left=0
+    right=len(clean)-1
+    while left<=right:
+        if clean[left]!=clean[right]:
+            return False
+        left+=1
+        right-=1
+    
+    return True
+    
+print(palindrom("A man, a plan, a canal: Panama"))
+
+//ai version
+
+def palindrom(s):
+    
+    clean="".join(char.lower()for char in s if char.isalnum())
+    
+    reverse=clean[::-1]
+
+    return clean==reverse
+    
+print(palindrom("A man, a plan, a canal: Panama"))

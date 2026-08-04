@@ -1,0 +1,17 @@
+A Greedy Pattern to Remember
+
+This problem teaches a very common pattern:
+
+Sort both arrays.
+Start with the smallest items in each.
+Maintain two pointers.
+If they match, use both and move both.
+Otherwise, discard the smaller one (move only that pointer).
+
+You'll see this pattern again in many interview problems such as:
+
+Assign Cookies
+Matching jobs to workers
+Boats to Save People
+Advantage Shuffle
+Some interval matching problems

@@ -1,0 +1,3 @@
+see July 12 and July 26 then you will get an idea..
+
+here we use the abs and the % (modulo) operator

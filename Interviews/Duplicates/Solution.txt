@@ -1,0 +1,42 @@
+# code that prints the duplicate elements also
+def duplicates(nums):
+    unique_elements=set()
+    duplicate_elements=[]
+    for num in nums:
+        if num in unique_elements:
+            duplicate_elements.append(num)
+        unique_elements.add(num)
+    if duplicate_elements:
+        print(duplicate_elements)
+        return True
+    return False
+    
+print(duplicates([1,2,3,1]))
+print(duplicates([1,2,3,4]))
+print(duplicates(nums = [1,1,1,3,3,4,3,2,4,2]))
+
+// other way
+def duplicates(nums):
+    unique_elements=set(nums)
+    if len(unique_elements)==len(nums):
+        return False
+    return True
+
+print(duplicates([1,2,3,1]))
+print(duplicates([1,2,3,4]))
+print(duplicates(nums = [1,1,1,3,3,4,3,2,4,2]))
+
+// ai version of above code 
+def contains_duplicate(nums):
+    return len(nums) != len(set(nums))
+
+//Ai version
+def contains_duplicate(nums):
+    seen = set()
+
+    for num in nums:
+        if num in seen:
+            return True
+        seen.add(num)
+
+    return False

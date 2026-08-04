@@ -1,0 +1,66 @@
+Lucky Coupon Number
+
+A supermarket generates coupon numbers for its customers. The marketing team believes that a coupon is luckier when the sum of its digits is higher.
+
+You are given a coupon number N. Your task is to find a coupon number less than or equal to N whose digit sum is maximum. If multiple coupon numbers have the same maximum digit sum, return the largest coupon number among them.
+
+Input Format:
+A single integer N, representing the maximum coupon number allowed.
+
+Output Format:
+Print the coupon number less than or equal to N that has the maximum possible sum of digits.
+If multiple numbers have the same maximum digit sum, print the largest number.
+
+Constraints:
+1 ≤ N ≤ 10^9
+
+
+Example 1:
+
+Input:
+100
+
+Output:
+99
+
+Explanation:
+
+Number     Sum of Digits
+100        1
+99         18
+
+Since 99 ≤ 100 and its digit sum (18) is maximum, the answer is 99.
+
+
+Example 2:
+
+Input:
+500
+
+Output:
+499
+
+Explanation:
+
+Number     Sum of Digits
+500        5
+499        22
+
+499 has the highest digit sum.
+
+
+Example 3:
+
+Input:
+1234
+
+Output:
+999
+
+Explanation:
+
+Number     Sum of Digits
+1234       10
+999        27
+
+999 is less than 1234 and has the maximum digit sum.

@@ -1,0 +1,12 @@
+Golden Ratio
+Given two numbers, determine if their ratio approximates the golden ratio.
+
+Use a golden ratio of 1.618
+Allow a tolerance of 0.01
+Tests:
+Passed:1. is_golden_ratio(21, 34) should return True.
+Passed:2. is_golden_ratio(15, 20) should return False.
+Passed:3. is_golden_ratio(8, 13) should return True.
+Passed:4. is_golden_ratio(10, 16) should return False.
+Passed:5. is_golden_ratio(1618, 1000) should return True.
+Passed:6. is_golden_ratio(88, 55) should return False.

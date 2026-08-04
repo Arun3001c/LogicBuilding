@@ -1,0 +1,20 @@
+def rotate_array(arr, size):
+    lf=len(arr)-size
+    return arr[lf:]+arr[:lf]
+print(rotate_array([1, 2, 3, 4, 5], 2))
+print(rotate_array(["a", "b", "c", "d"], 1))
+
+
+
+def rotate_array(arr, k):
+    i = 0
+
+    while i < k:
+        last = arr.pop()      # remove last element
+        arr.insert(0, last)   # put it at the beginning
+        i += 1
+
+    return arr
+
+
+print(rotate_array([1, 2, 3, 4, 5], 2))

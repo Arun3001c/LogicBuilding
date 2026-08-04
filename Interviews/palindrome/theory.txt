@@ -1,0 +1,25 @@
+s = "A man, a plan, a canal: Panama"
+
+# isalpha()  -> Returns True if the character is an alphabet letter (A-Z, a-z).
+#               Digits, spaces, and special characters are ignored.
+#
+# isalnum()  -> Returns True if the character is either:
+#               - an alphabet letter (A-Z, a-z), or
+#               - a digit (0-9).
+#               Spaces and special characters are ignored.
+#
+# lower()    -> Converts uppercase letters to lowercase.
+#
+# join()     -> Combines all the characters from the generator into a single string.
+
+clean = "".join(ch.lower() for ch in s if ch.isalpha())
+
+print(clean)
+# Output: amanaplanacanalpanama
+
+
+# isalpha() -> Keeps only letters.
+# isalnum() -> Keeps letters and digits.
+# isdigit() -> Keeps only digits.
+# lower()   -> Converts uppercase to lowercase.
+# join()    -> Joins characters into a single string.

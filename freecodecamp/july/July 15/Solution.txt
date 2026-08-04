@@ -1,0 +1,30 @@
+//my code 
+def chunk_array(arr, size):
+    chunks=[]
+    end=size
+
+    for i in range(0,len(arr), size):
+        chunks.append(arr[i:end])
+        end+=size
+
+    return chunks
+
+//ai version
+
+def chunk_array(arr, size):
+    result = []
+    chunk = []
+
+    for item in arr:
+        chunk.append(item)
+
+        if len(chunk) == size:
+            result.append(chunk)
+            chunk = []
+
+    if len(chunk) > 0:
+        result.append(chunk)
+
+    return result
+
+here i got the both ideas but not able to write the below code since i failed at handling the chunk empty and handling the last chunk too.

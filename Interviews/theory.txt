@@ -1,0 +1,24 @@
+===============================two sum==============
+i solved this using the hash map concept learned in geeks for geeks so now i newly learned the one thing that is set default which is used to add the value to a dictinary in python with default value like get method that handles the errors .
+d = {}
+d.setdefault("count", 0)
+value = d.setdefault("value", 10)
+print(value)   # 0
+print(d)       # {'count': 0}
+===============================Duplicates===========
+here it contains various types of solutions see them
+1. iterating through the nums and adding them to set
+2. using the set with len() method
+===============================Anagram==============(string)
+here i first written code had some edge case that fails so for that see the error code.
+we solve this with either the dict or counter.
+=============================buy once and sell once=
+here i need to buy the stocks at max once and sell once and need to find the max profit and need to return it so now learn this is different from multiple transactions so for this see geeksforgeeks.org website
+=============================buy and sell stock multiple transactions ====
+so here i don't think this is a greedy algorithm and written normal code that find the best profit.
+=============================majority element =======
+i solved this using the hash map and then iterating through the values whose represent count.
+=============================palindrome ============(string)
+here i used to isalnum() to need letter where it keeps letters and numbers so here i need to know some other functions and read the theory and see the solutions.
+=============================merge two sorted array==
+see the solution it consists of multiple ways to find the answer.

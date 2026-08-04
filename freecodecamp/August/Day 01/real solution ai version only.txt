@@ -1,0 +1,69 @@
+def solve_magic_square(grid):
+    # Find missing cell
+    r = c = -1
+    for i in range(3):
+        for j in range(3):
+            if grid[i][j] == 0:
+                r, c = i, j
+                break
+        if r != -1:
+            break
+
+    # Determine the magic sum from a complete line
+    magic_sum = None
+
+    # Rows
+    for i in range(3):
+        if 0 not in grid[i]:
+            magic_sum = sum(grid[i])
+            break
+
+    # Columns
+    if magic_sum is None:
+        for j in range(3):
+            col = [grid[i][j] for i in range(3)]
+            if 0 not in col:
+                magic_sum = sum(col)
+                break
+
+    # Diagonals
+    if magic_sum is None:
+        diag = [grid[i][i] for i in range(3)]
+        if 0 not in diag:
+            magic_sum = sum(diag)
+
+    if magic_sum is None:
+        diag = [grid[i][2 - i] for i in range(3)]
+        if 0 not in diag:
+            magic_sum = sum(diag)
+
+    if magic_sum is None:
+        return "impossible"
+
+    # Compute missing value
+    if r == 0 or r == 1 or r == 2:
+        missing = magic_sum - sum(grid[r])
+
+    if missing <= 0:
+        return "impossible"
+
+    grid[r][c] = missing
+
+    # Validate rows
+    for i in range(3):
+        if sum(grid[i]) != magic_sum:
+            return "impossible"
+
+    # Validate columns
+    for j in range(3):
+        if sum(grid[i][j] for i in range(3)) != magic_sum:
+            return "impossible"
+
+    # Validate diagonals
+    if sum(grid[i][i] for i in range(3)) != magic_sum:
+        return "impossible"
+
+    if sum(grid[i][2 - i] for i in range(3)) != magic_sum:
+        return "impossible"
+
+    return missing

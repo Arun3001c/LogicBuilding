@@ -1,0 +1,59 @@
+MORSE_CODE = {
+    ".-":"A", "-...":"B", "-.-.":"C", "-..":"D", ".":"E",
+    "..-.":"F", "--.":"G", "....":"H", "..":"I", ".---":"J",
+    "-.-":"K", ".-..":"L", "--":"M", "-.":"N", "---":"O",
+    ".--.":"P", "--.-":"Q", ".-.":"R", "...":"S", "-":"T",
+    "..-":"U", "...-":"V", ".--":"W", "-..-":"X", "-.--":"Y",
+    "--..":"Z"
+}
+
+def decode_morse(morse_code):
+    words = morse_code.strip().split("   ")
+    decoded = []
+
+    for word in words:
+        letters = word.split()
+        decoded.append("".join(MORSE_CODE[letter] for letter in letters))
+
+    return " ".join(decoded)
+
+
+//corrected version of first written logic using reverse codes with next()
+def decode_morse(code):
+    morse_code = {
+        "A": ".-", "B": "-...", "C": "-.-.", "D": "-..", "E": ".",
+        "F": "..-.", "G": "--.", "H": "....", "I": "..", "J": ".---",
+        "K": "-.-", "L": ".-..", "M": "--", "N": "-.", "O": "---",
+        "P": ".--.", "Q": "--.-", "R": ".-.", "S": "...", "T": "-",
+        "U": "..-", "V": "...-", "W": ".--", "X": "-..-", "Y": "-.--",
+        "Z": "--.."
+    }
+
+    words = code.strip().split("   ")
+    result = ""
+
+    for word in words:
+        for c in word.split():
+            letter = next((k for k, v in morse_code.items() if v == c), "")
+            result += letter
+        result += " "
+
+    return result.strip()
+
+// recommended version
+def decode_morse(code):
+    morse_code = {
+        "A": ".-", "B": "-...", "C": "-.-.", "D": "-..", "E": ".",
+        "F": "..-.", "G": "--.", "H": "....", "I": "..", "J": ".---",
+        "K": "-.-", "L": ".-..", "M": "--", "N": "-.", "O": "---",
+        "P": ".--.", "Q": "--.-", "R": ".-.", "S": "...", "T": "-",
+        "U": "..-", "V": "...-", "W": ".--", "X": "-..-", "Y": "-.--",
+        "Z": "--.."
+    }
+
+    decode = {v: k for k, v in morse_code.items()}
+
+    return " ".join(
+        "".join(decode[c] for c in word.split())
+        for word in code.strip().split("   ")
+    )

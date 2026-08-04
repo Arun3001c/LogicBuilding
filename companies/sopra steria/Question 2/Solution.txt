@@ -1,0 +1,19 @@
+n = int(input())
+
+weights = list(map(int, input().split()))
+
+tops = []
+
+for w in weights:
+    placed = False
+
+    for i in range(len(tops)):
+        if tops[i] > w:
+            tops[i] = w
+            placed = True
+            break
+
+    if not placed:
+        tops.append(w)
+
+print(len(tops))

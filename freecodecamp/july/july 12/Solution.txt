@@ -1,0 +1,23 @@
+def horoscope_match(sign1, sign2):
+    signs=["Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"]
+    sign1_position=signs.index(sign1)
+    sign2_position=signs.index(sign2)
+    forward_distance=(sign2_position-sign1_position)%12
+    backward_distance=(sign1_position-sign2_position)%12
+    
+    distance=min(forward_distance, backward_distance)
+    
+    if distance==0:
+        return "100%"
+    elif distance==1:
+        return "40%"
+    elif distance==2:
+        return "80%"
+    elif distance==3:
+        return "30%"
+    elif distance==4:
+        return "90%"
+    elif distance==5:
+        return "20%"
+    elif distance==6:
+        return "50%"

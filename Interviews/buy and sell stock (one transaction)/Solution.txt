@@ -1,0 +1,28 @@
+#written code
+def profit(prices):
+    minimum= float("inf")
+    max_profit=0
+    for price in prices:
+        minimum=min(minimum, price)
+        profits=price-minimum
+        if max_profit<profits:
+            max_profit=profits
+    return max_profit
+//ai verison
+def max_profit(prices):
+    minimum = float("inf")
+    max_profit = 0
+
+    for price in prices:
+        minimum = min(minimum, price)
+
+        current_profit = price - minimum
+        max_profit = max(max_profit, current_profit)
+    # print(minimum)
+    return max_profit
+
+        
+    
+    
+print(max_profit([7,1,5,3,6,4]))
+print(max_profit([100, 180, 260, 310, 40, 535, 695]))

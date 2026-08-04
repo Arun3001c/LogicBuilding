@@ -1,0 +1,35 @@
+
+def solve_magic_square(grid):
+    pos = None
+    for i in range(len(grid)):
+        for j in range(len(grid[0])):
+            if grid[i][j]==0:
+                pos=[i,j]
+                break
+        if pos is not None:
+            break
+    # print(i)
+    total_value_of_that_row=sum(grid[i])
+    if pos[0]-1>=0:
+        total=sum(grid[i-1])
+    else:
+        total=sum(grid[i+1])
+    grid[i][j]=total-total_value_of_that_row
+    first_row=sum(grid[0])
+    second_row=sum(grid[1])
+    third_row=sum(grid[2])
+    first_col=sum(rows[0] for rows in grid)
+    second_col=sum(rows[1] for rows in grid)
+    third_col=sum(rows[2] for rows in grid)
+    diagonal_sum = sum(grid[i][i] for i in range(3))
+    secondary_sum = sum(grid[i][2 - i] for i in range(3))
+    if first_row==second_row==third_row==first_col==second_col==third_col==diagonal_sum==secondary_sum:
+        return grid[i][j]
+    else:
+        return "impossible"
+
+print(solve_magic_square([[2, 7, 6], [9, 0, 1], [4, 3, 8]]))
+print(solve_magic_square([[0, 14, 12], [18, 10, 2], [8, 6, 16]]))
+print(solve_magic_square([[12, 17, 16], [19, 0, 10], [14, 13, 18]]))
+print(solve_magic_square([[15, 35, 31], [43, 27, 11], [23, 19, 0]]))
+print(solve_magic_square([[26, 41, 14], [47, 35, 0], [32, 29, 44]]))

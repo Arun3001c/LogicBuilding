@@ -1,0 +1,25 @@
+def pig_latin(sentence):
+    vowels = "aeiou"
+
+    def convert_word(word):
+        first_upper = word[0].isupper()
+        lower_word = word.lower()
+
+        # Word starts with a vowel
+        if lower_word[0] in vowels:
+            result = lower_word + "way"
+        else:
+            # Find first vowel position
+            index = 0
+            while index < len(lower_word) and lower_word[index] not in vowels:
+                index += 1
+
+            result = lower_word[index:] + lower_word[:index] + "ay"
+
+        # Restore first letter case
+        if first_upper:
+            result = result[0].upper() + result[1:]
+
+        return result
+
+    return " ".join(convert_word(word) for word in sentence.split())

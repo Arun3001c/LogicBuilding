@@ -1,0 +1,2 @@
+next() approach: search through entries each time (O(n) per letter, where n is the number of mappings).
+Reversed dictionary: direct lookup (O(1) per letter).

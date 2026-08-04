@@ -1,0 +1,42 @@
+def is_anagram(s, t):
+    if len(s) != len(t):
+        return False
+
+    s_dict = {}
+    t_dict = {}
+
+    for char in s:
+        s_dict[char] = s_dict.get(char, 0) + 1
+
+    for char in t:
+        t_dict[char] = t_dict.get(char, 0) + 1
+
+    return s_dict == t_dict
+// more enhanced ai version
+count = {}
+
+for ch in s:
+    count[ch] = count.get(ch, 0) + 1
+
+for ch in t:
+    if ch not in count:
+        return False
+    count[ch] -= 1
+    if count[ch] < 0:
+        return False
+
+return True
+
+// ai version
+
+from collections import Counter
+
+def is_anagram(s, t):
+    return Counter(s) == Counter(t)
+
+//ai version
+def is_anagram(s, t):
+    if len(s) != len(t):
+        return False
+
+    return sorted(s) == sorted(t)

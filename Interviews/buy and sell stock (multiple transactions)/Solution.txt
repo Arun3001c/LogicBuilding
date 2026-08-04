@@ -1,0 +1,29 @@
+//written code
+def multiple_buy_sell(prices):
+    buy_price=float('inf')
+    max_profit=0
+    sell_price=0
+    for price in prices:
+        buy_price=min(buy_price, price)
+        current_profit=price-buy_price
+        if sell_price <= current_profit:
+            sell_price=max(sell_price, current_profit)
+        else:
+            max_profit+=sell_price
+            buy_price=price
+            sell_price=0
+    max_profit+=sell_price
+    return max_profit
+
+
+//AI version it is greedy algorithm
+
+class Solution:
+    def maxProfit(self, prices):
+        total_profit = 0
+
+        for i in range(1, len(prices)):
+            if prices[i] > prices[i - 1]:
+                total_profit += prices[i] - prices[i - 1]
+
+        return total_profit

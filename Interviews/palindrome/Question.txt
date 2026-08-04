@@ -1,0 +1,79 @@
+Valid Palindrome (Two Pointers)
+Problem Statement
+Given a string s, return True if it is a palindrome after:
+
+Converting uppercase letters to lowercase.
+Removing all non-alphanumeric characters.
+A palindrome is a string that reads the same forward and backward.
+
+Examples
+Example 1:
+
+Input:
+s = "A man, a plan, a canal: Panama"
+
+Output:
+True
+
+After cleaning:
+
+amanaplanacanalpanama
+
+It reads the same from both sides.
+
+Example 2:
+
+Input:
+s = "race a car"
+
+Output:
+False
+
+After cleaning:
+
+raceacar
+
+Forward:
+
+raceacar
+
+Backward:
+
+racaecar
+
+Not the same.
+
+Think about the approach
+A brute-force way:
+
+Clean the string.
+Reverse it.
+Compare both strings.
+But we can do it efficiently using two pointers.
+
+Idea:
+
+left                         right
+ ↓                            ↓
+A  m  a  n  ...  a  m  a  n  A
+
+Start one pointer from the beginning.
+Start another pointer from the end.
+Compare characters.
+Move them toward the center.
+Python hints:
+Useful methods:
+
+s.lower()
+
+Convert to lowercase.
+
+char.isalnum()
+
+Checks if a character is a letter or number.
+
+Example:
+
+"a".isalnum()   # True
+",".isalnum()   # False
+

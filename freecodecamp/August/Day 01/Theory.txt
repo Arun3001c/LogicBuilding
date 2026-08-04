@@ -1,0 +1,43 @@
+At first i don't keep a break then i got error, after that i keep a break to improve efficiency then also i got errors then took pos value initially none and checked to handle everything 
+here it first creates a pos value none and handles errors and in the ai version it creates with value -1.
+
+and next it checks the rows for magic square or sum , next columns if the value is none and diagonals if so
+
+so checks for the condition and returns impossible and after also that handles the rows, column, diagonals separately. and returns the value
+
+
+learn codes for checking the columns 
+
+first_col=sum(rows[0] for rows in grid)
+
+diagonal sum
+
+diagonal_sum = sum(grid[i][i] for i in range(3))
+secondary_sum = sum(grid[i][2 - i] for i in range(3))
+
+# mistakes 
+1. first i don't kept the outer logic in loop
+my code:
+rows = len(grid) - 1   # 2
+cols = len(grid[0]) - 1  # 2
+
+for i in range(rows):
+    for j in range(cols):
+        if grid[i][j] == 0:
+            pos = [i, j]
+            break
+
+The break only exits the inner loop (for j), not the outer loop (for i).
+
+If you want to stop both loops as soon as you find the 0, you can do:
+
+pos = None
+for i in range(len(grid)):
+    for j in range(len(grid[0])):
+        if grid[i][j] == 0:
+            pos = [i, j]
+            break
+    if pos is not None:
+        break
+
+print(pos)

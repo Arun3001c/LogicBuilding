@@ -1,0 +1,123 @@
+max() is there to make your function work regardless of the order of the inputs.
+
+Suppose the test is:
+
+is_golden_ratio(21, 34)
+
+There are two possible divisions:
+
+21 / 34 = 0.6176
+34 / 21 = 1.6190
+
+The golden ratio is 1.618, so you want the larger of the two results.
+
+Now suppose the test is reversed:
+
+is_golden_ratio(34, 21)
+
+The divisions become:
+
+34 / 21 = 1.6190
+21 / 34 = 0.6176
+
+Again, you want 1.6190.
+
+Using:
+
+ratio = max(a / b, b / a)
+
+means:
+
+if a is larger, a / b is chosen.
+if b is larger, b / a is chosen.
+
+So the ratio is always the larger number divided by the smaller number.
+
+An alternative that many programmers prefer is:
+
+ratio = max(a, b) / min(a, b)
+
+This makes your intention even clearer:
+
+max(a, b) → larger number
+min(a, b) → smaller number
+divide larger by smaller
+
+This is equivalent to using max(a / b, b / a), but it's easier to read because it directly says, "divide the larger number by the smaller one."
+
+abs() stands for absolute value.
+
+Its job is to remove the sign (+ or -) from a number.
+
+Examples:
+
+abs(5)     # 5
+abs(-5)    # 5
+abs(0.007) # 0.007
+abs(-0.007)# 0.007
+Why do we need it here?
+
+The problem asks:
+
+Is the ratio within 0.01 of 1.618?
+
+The word within means the ratio can be:
+
+a little larger than 1.618
+a little smaller than 1.618
+Example 1: Ratio is larger
+ratio = 1.625
+golden_ratio = 1.618
+
+ratio - golden_ratio
+
+Result:
+
+0.007
+
+This is within 0.01, so it should be True.
+
+Example 2: Ratio is smaller
+ratio = 1.611
+golden_ratio = 1.618
+
+ratio - golden_ratio
+
+Result:
+
+-0.007
+
+The distance is still 0.007, so this should also be True.
+
+But without abs(), you get -0.007.
+
+With abs():
+
+abs(-0.007)
+
+Result:
+
+0.007
+
+Now both cases are treated the same.
+
+Think of it as a number line
+1.608      1.618      1.628
+----|---------|---------|
+      ^ target
+
+A ratio of 1.611 is 0.007 away.
+
+A ratio of 1.625 is also 0.007 away.
+
+The distance is what matters, not whether the ratio is above or below the target.
+
+That's exactly what abs() gives you.
+
+So this line:
+
+abs(ratio - 1.618) <= 0.01
+
+reads as:
+
+"Is the distance between ratio and 1.618 less than or equal to 0.01?"

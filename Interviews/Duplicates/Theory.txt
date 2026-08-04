@@ -1,0 +1,26 @@
+There are two optimal approaches:
+
+Using a set while iterating.
+Comparing len(nums) with len(set(nums)).
+
+Why is using a set faster than using a list to check for duplicates?
+
+Think about the average time complexity of these operations:
+
+x in set
+x in list
+
+answer:
+
+A set is implemented using a hash table, so checking whether an element exists (x in set) takes average-case O(1) time. A list stores elements sequentially, so checking x in list may require scanning each element until a match is found, which takes O(n) time in the worst case. That's why using a set is much more efficient for detecting duplicates.
+
+If the interviewer asks for more detail, you can add:
+
+When creating a set from the array, each element is inserted into the hash table. Each insertion is O(1) on average, so processing all n elements takes O(n) time.
+
+A simple comparison
+Operation	List	Set
+Check if element exists	O(n)	O(1) average
+Add an element	O(1) (at end)	O(1) average
+Remove an element	O(n)	O(1) average
+

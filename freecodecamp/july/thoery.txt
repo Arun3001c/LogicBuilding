@@ -18,6 +18,21 @@ see the June soltace problem June 21 or 20th days
 "Issue Triage 2" solved using the conditional statements but here i learned of using the extend() it is used when to append multiple elements to list.
 ====================July 11====================================
 " Five Dice " i just got a thought of solving this using dictionary since it is just having few numbers and solved by the count so it is solved with that read the theory since i used the concept of circular iteration.
+===================July 12====================================
+" Horoscope Match " here it introduces the concept of circular iteration but i solved this with remembered logic which is solved in july26 th since due to preparation of steria exam i got gap so i don't solve these so now i am filling this gap by solving these 
+also read the theory in this question this will definitely solve your confusions.
+forward_distance=(sign2_position-sign1_position)%12 
+backward_distance=(sign1_position-sign2_position)%12
+===================July 13 ===================================
+" Tally counter " is solved using normal counting way with the help of iteration and the ai solved this using the method count.
+==================July 14 ====================================
+" Pet Age Calculator " simple problem just need to know what data type is used to solve these kind of problems.
+=================July 15======================================
+" Array Chunks " i first not able to solved to write the code for this since i have two approaches merging both approach but i written the logic and learned the handling of lists with slicing.
+===================July 16 ====================================
+" pig latin converter " here it is solved using the python string methods and here created a small convert function inside main function since we need to do the work for every word.
+===================July 20=====================================
+" Golden Ratio " here it is simple with ratio basically we need to know how to handle the negative numbers and floating numbers.
 ===================July 21=====================================
 " Word Blender " in this we need to concatenate the first half from first word and second half from second half do using loops but the more pythonic way is to use slicing operator
 ===================July 22====================================
@@ -33,3 +48,13 @@ see the June soltace problem June 21 or 20th days
 ==================July 27=====================================
 " pronic number " here i solved this with the knowing the factors and next checked the logic but the missed the main thing that the protonic number means k*(k+1) == n so for example :
 	6 =2 * 3 so instead of checking all these combinations i find the factors and done something so the main code just checks these combinations like 0, 2, 6, 12 ,... so here we reduce the iterations upto that number.
+==================July 28 ===================================
+" Contrast Rating 1 " here it is normal conditional statement problem.
+==================July 29 ===================================
+" Contrast Rating 2 " here is is also a normal conditional statement problem.
+==================July 30====================================
+" contrast Rating " here it is also a normal math and conditional statement problem but need to how to iterate the list see the ai version compulsory and mistakes code as well
+
+==================July 31 ===================================
+" Morse Code " here we solved by knowing the methods that we operate on hash map so for solving this i first written logic with reverse codes then realized to use the correct order since about efficiency and also next() works for o(n) but reverse_codes are with o(1) see the reversing code like this 
+reverse_morse = {v: k for k, v in morse_code.items()}

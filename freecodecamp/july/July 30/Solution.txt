@@ -1,0 +1,65 @@
+#my version with ai correction
+def get_contrast_rating(rgb1, rgb2, is_large_text):
+    def relative_luminance(rgb):
+        temp = rgb[:]  # make a copy
+        for i in range(3):
+            temp[i] /= 255
+            if temp[i] <= 0.04045:
+                temp[i] /= 12.92
+            else:
+                temp[i] = ((temp[i] + 0.055) / 1.055) ** 2.4
+
+        return 0.2126 * temp[0] + 0.7152 * temp[1] + 0.0722 * temp[2]
+
+    luminance_rgb1 = relative_luminance(rgb1) + 0.05
+    luminance_rgb2 = relative_luminance(rgb2) + 0.05
+
+    ratio = max(luminance_rgb1, luminance_rgb2) / min(luminance_rgb1, luminance_rgb2)
+
+    if is_large_text:
+        if ratio >= 4.5:
+            return "AAA"
+        elif ratio >= 3.0:
+            return "AA"
+        else:
+            return "Fail"
+    else:
+        if ratio >= 7.0:
+            return "AAA"
+        elif ratio >= 4.5:
+            return "AA"
+        else:
+            return "Fail"
+
+#Ai  version
+
+def get_contrast_rating(light_rgb, dark_rgb, large_text):
+    def relative_luminance(rgb):
+        def convert(channel):
+            channel /= 255
+            if channel <= 0.04045:
+                return channel / 12.92
+            return ((channel + 0.055) / 1.055) ** 2.4
+
+        r, g, b = map(convert, rgb)
+        return 0.2126 * r + 0.7152 * g + 0.0722 * b
+
+    light_lum = relative_luminance(light_rgb)
+    dark_lum = relative_luminance(dark_rgb)
+
+    contrast_ratio = (light_lum + 0.05) / (dark_lum + 0.05)
+
+    if large_text:
+        if contrast_ratio >= 4.5:
+            return "AAA"
+        elif contrast_ratio >= 3.0:
+            return "AA"
+        else:
+            return "Fail"
+    else:
+        if contrast_ratio >= 7.0:
+            return "AAA"
+        elif contrast_ratio >= 4.5:
+            return "AA"
+        else:
+            return "Fail"

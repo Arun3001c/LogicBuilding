@@ -1,0 +1,12 @@
+Tally Counter
+Given a string of tally marks, return the total count represented.
+
+Each pipe "|" represents one count.
+Every fifth mark is represented as a forward slash "/", completing a group of five ("||||/").
+Groups are separated by a space.
+Tests:
+Passed:1. get_tally_count("||||") should return 4.
+Passed:2. get_tally_count("||||/") should return 5.
+Passed:3. get_tally_count("||||/ |||") should return 8.
+Passed:4. get_tally_count("||||/ ||||/ ||||/ ||") should return 17.
+Passed:5. get_tally_count("||||/ ||||/ ||||/ ||||/ ||||/ ||||/ ||||/ ||||/ |") should return 41.

@@ -1,0 +1,8 @@
+def is_golden_ratio(a, b):
+    ratio = max(a / b, b / a)
+    golden_ratio = 1.618
+
+    if abs(ratio - golden_ratio) <= 0.01:
+        return True
+    else:
+        return False

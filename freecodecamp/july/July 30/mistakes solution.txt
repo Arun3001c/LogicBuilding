@@ -1,0 +1,144 @@
+#here the mistake is copying the list this will not create a copy instead it creates a new reference to that list so you need to use like this if to create a new list.
+In relative_luminance() you do:
+
+temp = rgb
+
+This does not create a copy. temp and rgb refer to the same list, so you're modifying the original input list. If the test framework reuses the same lists, later calculations will be wrong because the RGB values have already been converted.
+
+Use a copy instead:
+
+temp = rgb[:]
+
+or
+
+temp = list(rgb)
+Another issue
+
+The problem statement says:
+
+The lighter one will always be the first argument.
+
+So your ratio works only if rgb1 is indeed lighter. To make your function robust, compute:
+
+ratio = max(luminance_rgb1, luminance_rgb2) / min(luminance_rgb1, luminance_rgb2)
+
+
+def get_contrast_rating(rgb1, rgb2, is_large_text):
+    def relative_luminance(rgb):
+        temp=rgb
+        for i in range(len(temp)):
+            temp[i]=temp[i]/255
+            if temp[i]<=0.04045:
+                temp[i]=temp[i] / 12.92
+            else:
+                temp[i]=((temp[i] + 0.055) / 1.055) ** 2.4
+        return 0.2126 * temp[0] + 0.7152 * temp[1] + 0.0722 * temp[2]   
+    luminance_rgb1=relative_luminance(rgb1)+0.05
+    luminance_rgb2=relative_luminance(rgb2)+0.05
+    ratio=luminance_rgb1/luminance_rgb2
+    if is_large_text:
+        if ratio>=4.5:
+            return "AAA"
+        elif ratio>=3.0:
+            return "AA"
+        else:
+            return "Fail"
+    else:
+        if ratio >=7.0:
+            return "AAA"
+        elif ratio>=4.5:
+            return "AA"
+        else:
+            return "Fail"
+    
+print(get_contrast_rating([255, 255, 255], [0, 0, 0], False))
+print(get_contrast_rating([215, 188, 188], [55, 55, 55], False))
+print(get_contrast_rating([143, 144, 210], [46, 47, 61], False))
+print(get_contrast_rating([167, 167, 210], [53, 10, 53], True))
+print(get_contrast_rating([135, 147, 155], [60, 70, 90], True))
+print(get_contrast_rating([125, 210, 195], [105, 130, 90], True))
+
+//first written logic 
+
+def get_contrast_rating(rgb1, rgb2, is_large_text):
+    def relative_luminance(rbg):
+        for channel in rbg:
+            print(channel)
+            channel=channel//255 
+        print(rbg)
+    luminance_rgb1=relative_luminance(rgb1)
+    return rgb1
+    
+print(get_contrast_rating([255, 255, 255], [0, 0, 0], False))
+here why the channel value not modified
+
+The reason is that channel is just a local loop variable, not a reference to the list element.
+
+In your code:
+
+for channel in rbg:
+    print(channel)
+    channel = channel // 255
+
+Here's what happens:
+
+channel gets the value of each element (255, 255, 255).
+
+You assign a new value to the local variable:
+
+channel = channel // 255
+This does not change the list rbg. It only changes what the local variable channel refers to.
+
+For example:
+
+lst = [10, 20, 30]
+
+for x in lst:
+    x = 0
+
+print(lst)
+
+Output:
+
+[10, 20, 30]
+
+The list is unchanged.
+
+How to modify the list
+
+If you actually want to modify the list, iterate over the indices:
+
+def relative_luminance(rgb):
+    for i in range(len(rgb)):
+        print(rgb[i])
+        rgb[i] = rgb[i] // 255
+    print(rgb)
+
+relative_luminance([255, 255, 255])
+
+Output:
+
+255
+255
+255
+[1, 1, 1]
+Or create a new list (recommended)
+
+Instead of modifying the original list:
+
+def relative_luminance(rgb):
+    new_rgb = [channel // 255 for channel in rgb]
+    print(new_rgb)
+    return new_rgb
+One more issue
+
+Your function currently doesn't return anything:
+
+def relative_luminance(rbg):
+    ...
+
+Since there is no return, Python returns None by default, so
+
+luminance_rgb1 = relative_luminance(rgb1)
+
+will assign None to luminance_rgb1.

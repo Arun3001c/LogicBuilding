@@ -1,0 +1,17 @@
+def horoscope_match(sign1, sign2):
+    signs=["Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"]
+    sign1_position=signs.index(sign1)
+    sign2_position=signs.index(sign2)
+    print(sign1_position, sign2_position)
+    i=sign1_position
+    while (i != sign2_position):
+        print(i, end=" ")
+        print(signs[i])
+        i=(i+1)%12
+    print("Backward direction")
+    i=sign2_position
+    while(i!=sign1_position):
+        print(i,end=" ")
+        print(signs[i])
+        i=(i-1)%12
+(horoscope_match("Taurus","Aries"))

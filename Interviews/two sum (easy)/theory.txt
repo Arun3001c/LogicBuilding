@@ -1,0 +1,56 @@
+
+Version 1 (with else)
+if diff in values:
+    return values[diff], i
+else:
+    values[num] = i
+
+Version 2 (without else)
+if diff in values:
+    return values[diff], i
+
+values[num] = i
+
+Both produce the same result.
+
+Why do experienced Python developers often omit else?
+It reduces nesting and makes the code easier to read. This style is sometimes called using a guard clause or early return.
+
+Compare these:
+
+Nested:
+
+if condition:
+    return result
+else:
+    do_something()
+
+Early return:
+
+if condition:
+    return result
+
+do_something()
+
+The second version is flatter and often easier to scan.
+
+General rule
+If the if block ends with one of these:
+
+return
+break
+continue
+raise
+...then an else is often unnecessary because execution won't continue into the following code when the condition is true.
+
+For example:
+
+for num in nums:
+    if num < 0:
+        continue
+
+    print(num)
+
+Using else here would add extra indentation without changing the behavior.
+
+So your code is not wrong. In fact, it's perfectly valid. Omitting the else is simply a common Python style that keeps the code a bit cleaner

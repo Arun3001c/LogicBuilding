@@ -1,0 +1,3 @@
+=====================AUG 1==================================
+" Magic Square Solver " here it is a 2d array just need to know about the how to find the sum of columns and diagonal and rows and validation and must read the theory
+====================

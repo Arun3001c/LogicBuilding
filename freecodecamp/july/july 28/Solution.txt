@@ -1,0 +1,36 @@
+def get_contrast_rating(ratio, is_large_text):
+    ratio = float(ratio)
+
+    if is_large_text:
+        if ratio < 3.0:
+            return "Fail"
+        elif 3.0 <= ratio < 4.5:
+            return "AA"
+        elif ratio >= 4.5:
+            return "AAA"
+    else:
+        if ratio < 4.5:
+            return "Fail"
+        elif 4.5 <= ratio < 7.0:
+            return "AA"
+        elif ratio >= 7.0:
+            return "AAA"
+
+//Ai version
+def get_contrast_rating(ratio, is_large_text):
+    ratio = float(ratio)
+
+    if is_large_text:
+        if ratio >= 4.5:
+            return "AAA"
+        elif ratio >= 3.0:
+            return "AA"
+        else:
+            return "Fail"
+    else:
+        if ratio >= 7.0:
+            return "AAA"
+        elif ratio >= 4.5:
+            return "AA"
+        else:
+            return "Fail"

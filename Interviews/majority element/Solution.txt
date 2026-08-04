@@ -1,0 +1,11 @@
+def majority_element(nums):
+    val={}
+    length=len(nums)
+    for num in nums:
+        val[num]=val.get(num,0)+1
+    for num,value in val.items():
+        if value >length/2:
+            return num
+    
+print(majority_element([3,2,3]))
+print(majority_element([2,2,1,1,1,2,2]))
