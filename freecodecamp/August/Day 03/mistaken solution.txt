@@ -1,0 +1,40 @@
+def get_emoji_phrase(s):
+    emoji_dict = {
+    "👶": "baby",
+    "🐱": "cat",
+    "🐕": "dog",
+    "🐟": "fish",
+    "🥵": "hot",
+    "🧊": "ice",
+    "🪨": "rock",
+    "🦈": "shark",
+    "🍲": "soup",
+    "⭐": "star"}
+    words=[]
+    
+    for emoji in s.strip():
+        if emoji in emoji_dict:
+            words.append(emoji_dict[emoji])
+    return " ".join(words)
+
+The issue is with this line:
+
+for emoji in s.strip().split():
+
+.split() splits the string on whitespace. Your input:
+
+"🪨⭐"
+
+contains no spaces, so it becomes:
+
+["🪨⭐"]
+
+Your dictionary has keys "🪨" and "⭐", but not "🪨⭐", so the lookup fails.
+
+If the emojis are space-separated
+
+If the input is:
+
+"🪨 ⭐"
+
+then your original .split() approach works.

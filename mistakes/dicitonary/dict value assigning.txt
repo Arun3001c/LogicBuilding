@@ -1,0 +1,16 @@
+# Create an empty dictionary
+food_chain = {}
+
+# Add key-value pairs directly
+# key = predator, value = prey
+food_chain["wolf"] = "deer"
+food_chain["deer"] = "grass"
+
+# Create an empty dictionary
+food_chain = {}
+
+# get() checks if the key exists
+# If "wolf" does not exist, use an empty list []
+# Then append the new prey
+food_chain["wolf"] = food_chain.get("wolf", [])
+food_chain["wolf"].append("deer")

@@ -1,0 +1,79 @@
+def get_spoken_duration(seconds):
+    hours=int(seconds/3600)
+    # print(hours)
+    mins=int((seconds-(hours*60 *60))/60)
+    # print(mins)
+    extra_seconds= seconds-(hours *60*60) -(mins*60)
+    parts=[]
+    if hours:
+        if hours==1:
+            parts.append("1 hour")
+        else:
+            parts.append(f"{hours} hours")
+    if mins:
+        if mins==1:
+            parts.append("1 minute")
+        else:
+            parts.append(f"{mins} minutes")
+    if extra_seconds:
+        if extra_seconds==1:
+            parts.append(f"1 second")
+        else:
+            parts.append(f"{extra_seconds} seconds")
+    if len(parts)==1:
+        return parts[0]
+    elif len(parts)==2:
+        return parts[0]+ " and " +parts[1]
+    else:
+        return ", ".join(parts[:-1])+" and "+parts[-1]
+    return [hours, mins, extra_seconds]
+print(get_spoken_duration(3723))
+print(get_spoken_duration(7295))
+print(get_spoken_duration(8521))
+print(get_spoken_duration(435))
+print(get_spoken_duration(14455))
+print(get_spoken_duration(72000))
+print(get_spoken_duration(1))
+
+
+//ai version
+def get_spoken_duration(seconds):
+    hours = seconds // 3600
+    mins = (seconds % 3600) // 60
+    secs = seconds % 60
+
+    parts = []
+
+    if hours:
+        if hours == 1:
+            parts.append("1 hour")
+        else:
+            parts.append(f"{hours} hours")
+
+    if mins:
+        if mins == 1:
+            parts.append("1 minute")
+        else:
+            parts.append(f"{mins} minutes")
+
+    if secs:
+        if secs == 1:
+            parts.append("1 second")
+        else:
+            parts.append(f"{secs} seconds")
+
+    if len(parts) == 1:
+        return parts[0]
+    elif len(parts) == 2:
+        return parts[0] + " and " + parts[1]
+    else:
+        return ", ".join(parts[:-1]) + " and " + parts[-1]
+
+
+print(get_spoken_duration(3723))
+print(get_spoken_duration(7295))
+print(get_spoken_duration(8521))
+print(get_spoken_duration(435))
+print(get_spoken_duration(14455))
+print(get_spoken_duration(72000))
+print(get_spoken_duration(1))

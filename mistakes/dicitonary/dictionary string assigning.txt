@@ -1,0 +1,61 @@
+when i write like this
+individual_food_chain[pair[0]] = individual_food_chain.get(pair[0], "") + pair[1]
+
+you are saying:
+
+"If this predator already exists, add another prey string to its old prey string."
+
+Example:
+
+pairs = [
+    ["wolf", "deer"],
+    ["wolf", "rabbit"]
+]
+
+Your code does:
+
+First iteration:
+
+individual_food_chain["wolf"] = "" + "deer"
+
+Dictionary:
+
+{
+    "wolf": "deer"
+}
+
+Second iteration:
+
+individual_food_chain["wolf"] = "deer" + "rabbit"
+
+Dictionary becomes:
+
+{
+    "wolf": "deerrabbit"
+}
+
+Now you lost the separation. Is the prey:
+
+"deer"?
+"rabbit"?
+"deerrabbit"?
+
+The dictionary no longer represents the relationship clearly.
+
+The get() pattern is for one key having multiple values.
+
+Example:
+
+{
+    "wolf": ["deer", "rabbit"]
+}
+
+Then you use:
+
+food_chain[predator] = food_chain.get(predator, [])
+food_chain[predator].append(prey)
+
+because you are collecting many things under one key.
+and the other way is to simply to add normally
+
+individual_food_chain[pair[0]] = pair[1]

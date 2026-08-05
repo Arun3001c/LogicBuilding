@@ -1,0 +1,44 @@
+def get_emoji_phrase(s):
+    emoji_dict = {
+    "👶": "baby",
+    "🐱": "cat",
+    "🐕": "dog",
+    "🐟": "fish",
+    "🥵": "hot",
+    "🧊": "ice",
+    "🪨": "rock",
+    "🦈": "shark",
+    "🍲": "soup",
+    "⭐": "star"}
+    words=[]
+    
+    for emoji in s.strip():
+        if emoji in emoji_dict:
+            words.append(emoji_dict[emoji])
+    return " ".join(words)
+
+//Ai version
+
+def get_emoji_phrase(s):
+    emoji_dict = {
+        "👶": "baby",
+        "🐱": "cat",
+        "🐕": "dog",
+        "🐟": "fish",
+        "🥵": "hot",
+        "🧊": "ice",
+        "🪨": "rock",
+        "🦈": "shark",
+        "🍲": "soup",
+        "⭐": "star",
+    }
+
+    words = []
+
+    for emoji in s:
+        if emoji in emoji_dict:
+            words.append(emoji_dict[emoji])
+
+    return words
+
+print(get_emoji_phrase("🪨⭐"))

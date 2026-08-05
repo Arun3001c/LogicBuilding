@@ -1,0 +1,23 @@
+Emoji Translator
+Given a string of emojis, return the phrase using the following table:
+
+Emoji	Word
+👶	"baby"
+🐱	"cat"
+🐕	"dog"
+🐟	"fish"
+🥵	"hot"
+🧊	"ice"
+🪨	"rock"
+🦈	"shark"
+🍲	"soup"
+⭐	"star"
+Return the words separated by spaces.
+
+Tests:
+Passed:1. get_emoji_phrase("🪨⭐") should return "rock star".
+Passed:2. get_emoji_phrase("🥵🐕") should return "hot dog".
+Passed:3. get_emoji_phrase("👶🦈") should return "baby shark".
+Passed:4. get_emoji_phrase("⭐🐟") should return "star fish".
+Passed:5. get_emoji_phrase("🧊🧊👶") should return "ice ice baby".
+Passed:6. get_emoji_phrase("🐱🐟🍲") should return "cat fish soup".

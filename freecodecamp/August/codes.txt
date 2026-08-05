@@ -1,3 +1,19 @@
-=====================AUG 1==================================
+=====================AUG 1 ==================================(matrix)
 " Magic Square Solver " here it is a 2d array just need to know about the how to find the sum of columns and diagonal and rows and validation and must read the theory
-====================
+=====================Aug 2====================================(linked list) (read the mistakes of dictionary)
+" Food Chain " here first i don't get the idea then later i used chatgpt then i remember this when i discussed in college now i written code and that is executed but here there are few mistakes that i am repeating while assigning the dictionary
+==================== Aug 3 ==================================(dictionary)
+" Emoji Translator " it is solved using the dictionary it is a basic one we just need to know the dictionary basics.
+====================Aug 4 =================================== (round)
+" Golf hand calculator " here the logic is simple but the problem is with the rounding function, and for this read the rounding function.
+
+Floating-point representation: Numbers like 2.15 often aren't stored exactly. 
+Python's rounding rule: If the stored value is exactly halfway between two choices, Python uses round half to even.
+
+if the floating number is exactly the middle then it is stored as one way and if it is other then it is stored in other way.
+print(format(2.25, ".20f")) #2.25000000000000000000
+print(format(2.15, ".20f")) #2.14999999999999991118
+
+so normal code fails here for this i written the manual code for the upward direction rounding.
+===================Aug 5====================================(clock logic + string)
+" Spoken Duration " here it is solved but definitely read the question and theory to know the mistakes that i have done and also see once the solution.

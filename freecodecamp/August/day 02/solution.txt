@@ -1,0 +1,22 @@
+def get_food_chain(pairs):
+    predators=[]
+    preys=[]
+    index=0
+    individual_food_chain={}
+    for pair in pairs:
+        predators.append(pair[0])
+        preys.append(pair[1])
+        # individual_food_chain[pair[0]]=individual_food_chain.get(pair[0], "")+pair[1]
+        individual_food_chain[pair[0]] = pair[1]
+    for predator in predators :
+        if predator not in preys:
+            apex_predator = predator
+    result=[]
+    result.append(apex_predator)
+    while True:
+        present_predator=result[-1]
+        if present_predator in individual_food_chain:
+            result.append(individual_food_chain[present_predator])
+        else:
+            break
+    return result

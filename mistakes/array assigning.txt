@@ -1,0 +1,13 @@
+def get_food_chain(pairs):
+    predator=[]
+    prey=[]
+    index=0
+    # individual_food_chain={}
+    for pair in pairs:
+        print(index)
+        predator[index]=pair[0]
+        prey[index]=pair[1]
+        index+=1
+        # individual_food_chain[pair[0]]=individual_food_chain(pair[0], "")+pair[1]
+    return individual_food_chain
+print(get_food_chain([["hawk", "snake"], ["snake", "frog"], ["frog", "fly"]]))

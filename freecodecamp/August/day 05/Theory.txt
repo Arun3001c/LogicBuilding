@@ -1,0 +1,5 @@
+A small improvement to your calculations is to use integer division (//) and modulo (%), which makes the code shorter and avoids repeated subtraction:
+
+hours = seconds // 3600
+mins = (seconds % 3600) // 60
+secs = seconds % 60

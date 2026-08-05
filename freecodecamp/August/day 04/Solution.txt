@@ -1,0 +1,10 @@
+def calculate_handicap(scores, pars):
+    length = len(scores)
+    difference = 0
+
+    for i in range(length):
+        difference += scores[i] - pars[i]
+
+    average = difference / length
+
+    return int(average * 10 + 0.5) / 10
