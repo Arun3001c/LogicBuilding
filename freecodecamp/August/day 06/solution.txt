@@ -1,0 +1,22 @@
+def get_spoken_time(hour_angle, minute_angle):
+    hours=int(hour_angle/30)
+    if hours==0:
+        hours=12
+    minutes= int(minute_angle/6)
+    if minutes==0:
+       return f"{hours} o'clock"
+    elif minutes==15:
+        return f"quarter past {hours}"
+    elif 0< minutes <30 :
+        return f"{minutes} minutes past {hours}"
+    elif minutes==30:
+        return f"half past {hours}"
+    elif minutes==45:
+        return f"quarter to {hours+1}"
+    elif 30<minutes<60:
+        return f"{60-minutes} minutes to {hours+1}" 
+    
+   
+    
+# print(get_spoken_time(90, 0))
+print(get_spoken_time(160, 120))

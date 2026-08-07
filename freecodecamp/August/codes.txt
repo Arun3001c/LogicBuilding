@@ -17,3 +17,7 @@ print(format(2.15, ".20f")) #2.14999999999999991118
 so normal code fails here for this i written the manual code for the upward direction rounding.
 ===================Aug 5====================================(clock logic + string)
 " Spoken Duration " here it is solved but definitely read the question and theory to know the mistakes that i have done and also see once the solution.
+===================Aug 6====================================(clock logic + rounding concept)(circular)
+" spoken Time " here i tried to use using the round() for finding the hours and minutes but that goes wrong as expected and next used int() and also i not handled the circular way of thinking since after 12 again goes to 1 so we use circular iteration.
+=================Aug 7 =====================================(while loop and some logic)
+" Nonogram Validator " here i solved this normally but not handled leading zeors and ending zeros and after with ai help i written the code and also see the other code give by ai.

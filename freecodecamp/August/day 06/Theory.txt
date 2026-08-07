@@ -1,0 +1,18 @@
+A couple of takeaways from this exercise:
+
+round() in Python doesn't always round .5 upward. It uses banker's rounding:
+
+round(2.5)  # 2
+round(3.5)  # 4
+int(x) and x // 1 (for positive numbers) truncate toward zero, which is what these tests apparently wanted.
+
+Chained comparisons are very useful:
+
+0 < minutes < 30
+30 < minutes < 60
+
+Be careful with conditions like:
+
+elif 3060:
+
+Any non-zero number is truthy, so that branch always executes.

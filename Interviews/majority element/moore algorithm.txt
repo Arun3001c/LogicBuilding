@@ -1,0 +1,76 @@
+# Boyer-Moore Majority Vote Algorithm
+#
+# History:
+# The algorithm was introduced by Robert S. Boyer and J Strother Moore in 1981.
+# It was designed to find the majority element (an element appearing more than n/2 times)
+# in an array using O(n) time and O(1) extra space.
+#
+# Core Idea:
+# The algorithm is based on the idea of "vote cancellation".
+# A majority element has more occurrences than all other elements combined,
+# so even after canceling its votes with other elements, it will still remain.
+#
+# Extension:
+# For the problem of finding elements appearing more than n/3 times,
+# there can be at most two such elements. Therefore, the Boyer-Moore idea
+# is extended by keeping two candidates and two counters.
+#
+# Important:
+# The first pass only finds possible candidates.
+# A second pass is required to verify their actual frequencies.
+
+def findMajority(arr):
+
+    n = len(arr)
+
+    # Step 1: Find possible candidates
+    candidate1 = -1
+    candidate2 = -1
+    count1 = 0
+    count2 = 0
+
+    for x in arr:
+
+        if x == candidate1:
+            count1 += 1
+
+        elif x == candidate2:
+            count2 += 1
+
+        elif count1 == 0:
+            candidate1 = x
+            count1 = 1
+
+        elif count2 == 0:
+            candidate2 = x
+            count2 = 1
+
+        else:
+            count1 -= 1
+            count2 -= 1
+
+
+    # Step 2: Verify actual frequencies
+    freq1 = 0
+    freq2 = 0
+
+    for x in arr:
+        if x == candidate1:
+            freq1 += 1
+        elif x == candidate2:
+            freq2 += 1
+
+
+    # Step 3: Build answer
+    ans = []
+
+    if freq1 > n//3:
+        ans.append(candidate1)
+
+    if freq2 > n//3:
+        ans.append(candidate2)
+
+
+    ans.sort()
+
+    return ans

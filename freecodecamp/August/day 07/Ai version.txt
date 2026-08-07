@@ -1,0 +1,45 @@
+def is_valid_nonogram(clue, cells):
+    groups = []
+    count = 0
+
+    for cell in cells:
+        if cell == 1:
+            count += 1
+        else:
+            if count > 0:
+                groups.append(count)
+                count = 0
+
+    # Handle a group ending at the last cell
+    if count > 0:
+        groups.append(count)
+
+    return groups == clue
+
+
+def is_valid_nonogram(clue, cells):
+    index = 0
+    n = len(cells)
+
+    for num in clue:
+        # Skip empty cells
+        while index < n and cells[index] == 0:
+            index += 1
+
+        count = 0
+
+        # Count filled cells
+        while index < n and cells[index] == 1:
+            count += 1
+            index += 1
+
+        if count != num:
+            return False
+
+    # Ensure there are no extra filled groups
+    while index < n:
+        if cells[index] == 1:
+            return False
+        index += 1
+
+    return True
