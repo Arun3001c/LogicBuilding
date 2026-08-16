@@ -1,0 +1,8 @@
+def is_balanced(s):
+    vowels = "aeiouAEIOU"
+    mid = len(s) // 2
+
+    first_half = s[:mid]
+    second_half = s[-mid:] if mid else ""
+
+    return sum(char in vowels for char in first_half) == sum(char in vowels for char in second_half)

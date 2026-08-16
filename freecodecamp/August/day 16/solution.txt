@@ -1,0 +1,24 @@
+//O(n) with O(1)
+def are_anagrams(str1, str2):
+    # Create 26 counters, one for each letter a-z
+    count = [0] * 26
+
+    # Count characters from the first string
+    for char in str1.lower():
+        if char != " ":
+            count[ord(char) - ord('a')] += 1
+
+    # Subtract characters from the second string
+    for char in str2.lower():
+        if char != " ":
+            count[ord(char) - ord('a')] -= 1
+
+    # If all counters are 0, the strings are anagrams
+    return all(value == 0 for value in count)
+
+//Ai version
+def are_anagrams(str1, str2):
+    str1 = str1.replace(" ", "").lower()
+    str2 = str2.replace(" ", "").lower()
+
+    return sorted(str1) == sorted(str2)

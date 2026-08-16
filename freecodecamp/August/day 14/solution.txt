@@ -1,0 +1,20 @@
+def space_jam(s):
+    letters=[]
+    for char in s:
+        if char!= " ":
+            if not char.isalnum():
+                letters.append(char)
+                continue
+            letters.append(char.upper())
+
+    return "  ".join(letters)
+print(space_jam("freeCodeCamp"))
+print(space_jam("   free   Code   Camp   "))
+print(space_jam("Hello World?!"))
+print( space_jam("C@t$ & D0g$") )
+print( space_jam("allyourbase") )
+
+\\Ai version :
+
+def space_jam(s):
+    return "  ".join(s.replace(" ", "").upper())

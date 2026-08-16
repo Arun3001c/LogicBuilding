@@ -1,0 +1,5 @@
+# Negative indexing starts counting from the end of a string.
+# -1 is the last character, -2 is the second-to-last, etc.
+# s[-mid:] gets the last `mid` characters of the string.
+# Example: "racecar"[-3:] gives "car".
+# `if mid else ""` handles cases where mid is 0.

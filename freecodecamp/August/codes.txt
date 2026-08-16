@@ -21,3 +21,13 @@ so normal code fails here for this i written the manual code for the upward dire
 " spoken Time " here i tried to use using the round() for finding the hours and minutes but that goes wrong as expected and next used int() and also i not handled the circular way of thinking since after 12 again goes to 1 so we use circular iteration.
 =================Aug 7 =====================================(while loop and some logic)
 " Nonogram Validator " here i solved this normally but not handled leading zeors and ending zeros and after with ai help i written the code and also see the other code give by ai.
+=================Aug 9 =====================================(see the mistake)
+" Between Two Buckets " here they will given the two dictionaries we just need to know how to access the values and understand the question and find the value for the condition provided in question and return those values in a list.
+=================Aug 11 ====================================(see the theory)
+" vowel Balance " here this question is solved before yet the question cames and solved with using normal way.
+=================Aug 12 ====================================(ord values)
+" Base Check " here first i written a base logic that works for few things later i get to know the logic behind and written that logic and also see the ai version code.
+=================Aug 14=====================================Strings [ Theory includes: isalpha() ]
+" Jbelmud Text " here i solved this using the string methods but see the ai version which is a single line done with replace and upper methods and read the theory and the mistake that i have done here.
+=================Aug 16 ====================================Strings
+" Anagram checker " here i solutions include two way with sorted and another with counter so now read the theory.

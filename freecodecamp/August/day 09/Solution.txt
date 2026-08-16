@@ -1,0 +1,11 @@
+def mix_paint(bucket1, bucket2):
+    r1 , g1 ,b1 = bucket1.get("color",0)
+    r2, g2, b2 = bucket2.get("color", 0)
+    f1=bucket1.get("fullness",0)
+    f2=bucket2.get("fullness",0)
+    total=f1+f2
+    mcr=round((r1* f1 + r2 * f2)/total)
+    mcg=round((g1*f1 + g2*f2)/total)
+    mcb=round((b1* f1 + b2* f2)/total)
+    
+    return [mcr, mcg, mcb]

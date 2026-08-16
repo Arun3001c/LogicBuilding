@@ -1,0 +1,13 @@
+One difference
+
+Your code:
+
+if char != " ":
+
+only checks for the normal space " ".
+
+isspace() checks other whitespace too:
+
+" ".isspace()    # True
+"\t".isspace()   # True
+"\n".isspace()   # True

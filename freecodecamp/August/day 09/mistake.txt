@@ -1,0 +1,2 @@
+r2, g2, b2 = bucket2.get("color", 0) this is wrong ones
+r1 , g1 ,b1 = bucket1.get("color",[0,0,0]) this is the correct way.

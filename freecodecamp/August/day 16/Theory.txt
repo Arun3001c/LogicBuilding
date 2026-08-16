@@ -1,0 +1,68 @@
+Why is this O(n)?
+
+We go through each string once:
+
+"listen"  → 6 characters
+"silent"  → 6 characters
+
+So the work is proportional to the input size:
+
+Time: O(n)
+
+We don't use sorted(), which would take O(n log n).
+
+Why is this O(1) space?
+
+This is the important part:
+
+count = [0] * 26
+
+The array always has exactly 26 elements, regardless of how long the strings are.
+
+a → count[0]
+b → count[1]
+c → count[2]
+...
+z → count[25]
+
+Since 26 is a fixed number:
+
+Space: O(1)
+
+Why do we add and subtract?
+
+For:
+
+are_anagrams("listen", "silent")
+
+First string adds:
+
+l +1
+i +1
+s +1
+t +1
+e +1
+n +1
+
+Second string subtracts:
+
+s -1
+i -1
+l -1
+e -1
+n -1
+t -1
+
+Everything becomes 0.
+
+[0, 0, 0, ..., 0]
+
+Therefore:
+
+return all(value == 0 for value in count)
+
+returns True.
+
+One important note
+
+This O(1) space solution assumes only a-z letters are allowed. If the problem allows arbitrary Unicode characters, a dictionary-based solution would generally use O(k) space, where k is the number of distinct characters.

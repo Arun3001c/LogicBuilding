@@ -1,0 +1,22 @@
+def is_valid_number(number, base):
+    for char in number.upper():
+
+        if char.isdigit():
+            # ord() gives the character code, not the actual digit value.
+            # Subtract ord('0') to convert '0'-'9' into values 0-9.
+            value = ord(char) - ord('0')
+
+        else:
+            # A=10, B=11, C=12, ..., Z=35.
+            # Subtract ord('A') to start counting from 0, then add 10
+            # because letters start after the digits 0-9.
+            value = ord(char) - ord('A') + 10
+
+        # A digit is valid only when its value is LESS than the base.
+        # We use >= because a value equal to the base is also invalid.
+        # Example: in base 16, valid values are 0-15.
+        # So value 16 is invalid because 16 >= 16.
+        if value >= base:
+            return False
+
+    return True

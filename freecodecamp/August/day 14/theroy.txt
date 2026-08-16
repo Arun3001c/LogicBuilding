@@ -1,0 +1,346 @@
+1. isinstance(x, str)
+
+Checks whether x is a string.
+
+x = "hello"
+
+
+print(isinstance(x, str))
+
+Output:
+
+True
+
+But:
+
+x = 123
+
+
+print(isinstance(x, str))
+
+Output:
+
+False
+Why is this useful?
+
+Remember that Python doesn't have a separate char type.
+
+x = "A"
+
+x is a str, even though it contains only one character.
+
+So:
+
+isinstance("A", str)      # True
+isinstance("Hello", str)  # True
+isinstance(123, str)      # False
+2. len(x) == 1
+
+len() tells you how many characters are inside a string.
+
+x = "A"
+
+
+print(len(x))
+
+Output:
+
+1
+
+Therefore:
+
+len(x) == 1
+
+is True.
+
+Compare:
+
+len("A")       # 1
+len("Hello")   # 5
+len("")        # 0
+len("@")       # 1
+
+So if you want to check whether something is a single character:
+
+x = "@"
+
+
+if isinstance(x, str) and len(x) == 1:
+    print("It is one character")
+
+This is roughly how you can think about a Python "char" check.
+
+3. x.isalpha()
+
+isalpha() checks whether all characters are alphabetic letters.
+
+x = "Hello"
+
+
+print(x.isalpha())
+
+Output:
+
+True
+
+But:
+
+"Hello123".isalpha()  # False
+"Hello!".isalpha()    # False
+"123".isalpha()       # False
+
+For a single character:
+
+"A".isalpha()  # True
+"z".isalpha()  # True
+"@".isalpha()  # False
+"5".isalpha()  # False
+Important
+
+isalpha() doesn't mean "is one character."
+
+This:
+
+"Hello".isalpha()
+
+is also True.
+
+It means:
+
+"Does this string contain only alphabetic characters?"
+
+4. x.isdigit()
+
+Checks whether all characters are digits.
+
+"123".isdigit()  # True
+"5".isdigit()    # True
+"abc".isdigit()  # False
+"12a".isdigit()  # False
+"@".isdigit()    # False
+
+Again, it can work on multiple characters:
+
+"123456".isdigit()
+
+returns:
+
+True
+
+So if you specifically want one digit:
+
+x = "5"
+
+
+if len(x) == 1 and x.isdigit():
+    print("Single digit")
+5. x.isalnum()
+
+This is a combination of alphabet + number.
+
+alnum = alphabet + numeric
+
+"A".isalnum()      # True
+"abc".isalnum()    # True
+"123".isalnum()    # True
+"abc123".isalnum() # True
+
+But:
+
+"@".isalnum()      # False
+"#".isalnum()      # False
+"$".isalnum()      # False
+" ".isalnum()      # False
+"abc!".isalnum()   # False
+
+This is particularly useful for your space_jam() example.
+
+You had:
+
+if not char.isalnum():
+
+That means:
+
+"If this character is NOT a letter or a number..."
+
+So:
+
+char = "@"
+
+
+if not char.isalnum():
+    print("Special character")
+
+Output:
+
+Special character
+6. x.isspace()
+
+Checks whether the string contains whitespace characters.
+
+For example:
+
+" ".isspace()   # True
+"\t".isspace()  # True
+"\n".isspace()  # True
+
+But:
+
+"A".isspace()   # False
+"5".isspace()   # False
+"@".isspace()   # False
+
+This is useful when you want to detect spaces instead of doing:
+
+if char != " ":
+
+For example:
+
+if not char.isspace():
+    print(char)
+
+This ignores whitespace.
+
+One difference
+
+Your code:
+
+if char != " ":
+
+only checks for the normal space " ".
+
+isspace() checks other whitespace too:
+
+" ".isspace()    # True
+"\t".isspace()   # True
+"\n".isspace()   # True
+7. x in "@#$%*"
+
+This one is a little different.
+
+It asks:
+
+"Is x contained inside this string?"
+
+For example:
+
+x = "@"
+
+
+if x in "@#$%*":
+    print("Special character")
+
+Output:
+
+Special character
+
+Because "@" exists inside:
+
+@ # $ % *
+
+Similarly:
+
+"@" in "@#$%*"  # True
+"#" in "@#$%*"  # True
+"$" in "@#$%*"  # True
+"%" in "@#$%*"  # True
+"*" in "@#$%*"  # True
+
+But:
+
+"!" in "@#$%*"  # False
+"A" in "@#$%*"  # False
+"5" in "@#$%*"  # False
+You can use this with multiple special characters
+special_chars = "@#$%*&!"
+
+
+if char in special_chars:
+    print("Special character")
+
+This is useful when you care about specific characters.
+
+The important difference
+
+Suppose:
+
+char = "@"
+
+You could check it in several ways:
+
+isinstance(char, str)
+
+➡️ Is it a string?
+True
+
+len(char) == 1
+
+➡️ Is it exactly one character?
+True
+
+char.isalpha()
+
+➡️ Is it a letter?
+False
+
+char.isdigit()
+
+➡️ Is it a digit?
+False
+
+char.isalnum()
+
+➡️ Is it a letter or digit?
+False
+
+char.isspace()
+
+➡️ Is it whitespace?
+False
+
+char in "@#$%*"
+
+➡️ Is it one of my specified special characters?
+True
+
+A useful mental model
+
+Think of it like this:
+
+                "A"
+                 │
+        ┌────────┼────────┐
+        ↓        ↓        ↓
+     isalpha  isdigit  isalnum
+       True     False     True
+
+For "5":
+
+                "5"
+                 │
+        ┌────────┼────────┐
+        ↓        ↓        ↓
+     isalpha  isdigit  isalnum
+       False    True      True
+
+For "@":
+
+                "@"
+                 │
+        ┌────────┼────────┐
+        ↓        ↓        ↓
+     isalpha  isdigit  isalnum
+       False    False     False
+
+Therefore, a common way to classify a character is:
+
+if char.isalpha():
+    print("Letter")
+elif char.isdigit():
+    print("Digit")
+elif char.isspace():
+    print("Whitespace")
+else:
+    print("Special character")
+
+This is very close to what you're doing in your space_jam() function.
